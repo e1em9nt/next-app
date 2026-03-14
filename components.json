@@ -13,11 +13,11 @@
   "iconLibrary": "lucide",
   "rtl": false,
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
+    "components": "@/app/shared/ui",
+    "utils": "@/pkg/cn-utils/cn.utils",
+    "ui": "@/app/shared/ui",
+    "lib": "@/pkg/cn-utils",
+    "hooks": "@/app/shared/hooks"
   },
   "menuColor": "default",
   "menuAccent": "subtle",
