@@ -2,6 +2,10 @@
     "HomePage": {
         "title": "Projekteinrichtung",
         "description": "Erste Projekteinrichtung",
-        "heading": "Startseite"
+        "heading": "Durchdachtes Design.",
+        "subheading": "Erleben Sie eine kuratierte Kollektion, in der Form und Funktion perfekt harmonieren. Minimalistisches Design, maximale Wirkung.",
+        "actions": {
+            "viewProducts": "Produkte ansehen"
+        }
     }
 }
