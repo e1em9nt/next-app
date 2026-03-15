@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: translations('title'),
     description: translations('description'),
   };
-};
+}
 
 export default async function RootLayout({
   children,
@@ -47,7 +47,7 @@ export default async function RootLayout({
           <QueryProvider>
             <Header />
             {children}
-            </QueryProvider>
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

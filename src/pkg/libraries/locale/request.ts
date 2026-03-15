@@ -18,7 +18,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
           day: 'numeric',
           month: 'short',
           year: 'numeric',
-        }
+        },
       },
       number: {
         precise: {
