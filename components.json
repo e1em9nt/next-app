@@ -14,9 +14,9 @@
   "rtl": false,
   "aliases": {
     "components": "@/app/shared/ui",
-    "utils": "@/pkg/cn-utils/cn.utils",
+    "utils": "@/pkg/utils/cn",
     "ui": "@/app/shared/ui",
-    "lib": "@/pkg/cn-utils",
+    "lib": "@/pkg/utils/cn",
     "hooks": "@/app/shared/hooks"
   },
   "menuColor": "default",
