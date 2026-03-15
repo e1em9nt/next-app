@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/pkg/libraries/locale';
 
 import { QueryProvider } from '@/app/shared/ui';
+import { Header } from '@/app/widgets/header';
 import '@/config/styles/globals.css';
 import { getTranslations } from 'next-intl/server';
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: translations('title'),
     description: translations('description'),
   };
-};
+}
 
 export default async function RootLayout({
   children,
@@ -44,7 +44,10 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <Header />
+            {children}
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>
