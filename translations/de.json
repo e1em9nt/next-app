@@ -1,11 +1,17 @@
 {
     "HomePage": {
-        "title": "Projekteinrichtung",
-        "description": "Erste Projekteinrichtung",
+        "title": "Produkte",
+        "description": "Erleben Sie eine kuratierte Kollektion, in der Form und Funktion perfekt harmonieren. Minimalistisches Design, maximale Wirkung.",
         "heading": "Durchdachtes Design.",
-        "subheading": "Erleben Sie eine kuratierte Kollektion, in der Form und Funktion perfekt harmonieren. Minimalistisches Design, maximale Wirkung.",
         "actions": {
             "viewProducts": "Produkte ansehen"
+        }
+    },
+    "Products": {
+        "heading": "Produkte",
+        "rating": {
+            "rate": "Bewertung",
+            "count": "Rezensionen"
         }
     }
 }

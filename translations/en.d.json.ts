@@ -3,12 +3,18 @@
 
 declare const messages: {
     "HomePage": {
-        "title": "Project setup",
-        "description": "Initial project setup",
+        "title": "Products",
+        "description": "Experience a curated collection where form meets function. Minimalist design, maximum impact.",
         "heading": "Refined by Design.",
-        "subheading": "Experience a curated collection where form meets function. Minimalist design, maximum impact.",
         "actions": {
             "viewProducts": "View Products"
+        }
+    },
+    "Products": {
+        "heading": "Products",
+        "rating": {
+            "rate": "Rating",
+            "count": "Reviews"
         }
     }
 };
