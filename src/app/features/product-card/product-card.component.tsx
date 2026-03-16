@@ -37,7 +37,9 @@ export const ProductCard = ({ product, priority, variant = 'compact' }: ProductC
             {product.category}
           </Badge>
         </div>
-        <h3 className={`${isCompact && 'line-clamp-2 h-13'} text-lg font-medium md:text-xl`}>{product.title}</h3>
+        <h3 className={`${isCompact && 'line-clamp-2 h-13'} text-lg font-medium md:text-xl`}>
+          {product.title}
+        </h3>
         {!isCompact && <p className="text-muted-foreground">{product.description}</p>}
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>

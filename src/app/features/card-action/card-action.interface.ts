@@ -1,4 +1,4 @@
 export interface CardActionProps {
-    isCompact: boolean;
-    href?: string;
+  isCompact: boolean;
+  href?: string;
 }
