@@ -2,5 +2,6 @@ import { Product } from '@/app/shared/interfaces';
 
 export interface ProductCardProps {
   product: Product;
-  priority: boolean;
+  priority?: boolean;
+  variant?: 'detailed' | 'compact';
 }
