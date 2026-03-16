@@ -22,10 +22,10 @@ export default function HomePage() {
             {translations('heading')}
           </h1>
           <p className="text-sm sm:text-base text-gray-700 sm:w-1/2 text-center">
-            {translations('subheading')}
+            {translations('description')}
           </p>
         </div>
-        <Link href="#" className={buttonVariants({ variant: 'default' })}>
+        <Link href="/products" className={buttonVariants({ variant: 'default' })}>
           {translations('actions.viewProducts')}
         </Link>
       </div>
