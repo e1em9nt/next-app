@@ -5,17 +5,20 @@ import { Badge } from '@/app/shared/ui/badge';
 import { ArrowRightIcon } from 'lucide-react';
 import { buttonVariants } from '@/app/shared/ui';
 import { cn } from '@/pkg/utils/cn';
-import { useFormatter } from 'next-intl';
-
+import { useFormatter, useTranslations } from 'next-intl';
 import { ProductCardProps } from './product-card.interface';
 
 export const ProductCard = ({ product, priority }: ProductCardProps) => {
   const formatCurrency = useFormatter();
+  const t = useTranslations('Products.rating');
 
   return (
     <Card className="group h-full overflow-hidden shadow-none px-2">
       <CardContent className="space-y-3.5">
-        <div className="mb-6 relative overflow-hidden rounded-lg sm:mb-12">
+        <Link
+          href={`/products/${product.id}`}
+          className="mb-6 block overflow-hidden rounded-lg sm:mb-12"
+        >
           <Image
             width={500}
             height={500}
@@ -24,9 +27,9 @@ export const ProductCard = ({ product, priority }: ProductCardProps) => {
             priority={priority}
             className="h-59.5 w-full object-contain transition-transform duration-300 group-hover:scale-105"
           />
-        </div>
+        </Link>
         <div className="flex items-center justify-between gap-1.5">
-          <div className="text-muted-foreground text-lg">
+          <div className="text-foreground font-semibold text-lg">
             {formatCurrency.number(product.price, {
               style: 'currency',
               currency: 'USD',
@@ -38,16 +41,21 @@ export const ProductCard = ({ product, priority }: ProductCardProps) => {
           </Badge>
         </div>
         <h3 className="line-clamp-2 h-13 text-lg font-medium md:text-xl">{product.title}</h3>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
-            <span>Rating: {product.rating.rate}</span> /{' '}
-            <span>Reviews: {product.rating.count}</span>
+            <span>
+              {t('rate')}: {product.rating.rate}
+            </span>{' '}
+            /{' '}
+            <span>
+              {t('count')}: {product.rating.count}
+            </span>
           </div>
           <Link
             href={`/products/${product.id}`}
             className={cn(
               buttonVariants({ variant: 'outline', size: 'icon' }),
-              'group-hover:bg-primary! group-hover:text-primary-foreground group-hover:border-primary hover:border-primary hover:bg-primary! hover:text-primary-foreground transition-colors duration-300',
+              'ml-auto group-hover:bg-primary! group-hover:text-primary-foreground group-hover:border-primary hover:border-primary hover:bg-primary! hover:text-primary-foreground transition-colors duration-300',
             )}
           >
             <ArrowRightIcon className="size-4 -rotate-45" />
