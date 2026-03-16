@@ -1,1 +1,1 @@
-export { ProductListPage } from './product-list-page.component';
+export { ProductListPage } from './product-list-page.module';
