@@ -47,12 +47,7 @@ export const LoginForm = () => {
         <Label htmlFor="email" className="leading-5">
           Email <span className="text-destructive">*</span>
         </Label>
-        <Input
-          type="email"
-          id="email"
-          placeholder="name@example.com"
-          {...register('email')}
-        />
+        <Input type="email" id="email" placeholder="name@example.com" {...register('email')} />
         {errors.email && <p className="text-destructive">{errors.email.message}</p>}
       </div>
 
