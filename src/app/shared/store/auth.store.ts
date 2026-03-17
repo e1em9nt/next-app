@@ -14,6 +14,11 @@ export const useAuthStore = create<AuthState>()(
       users: [],
       currentUser: null,
       token: null,
+      _hasHydrated: false,
+
+      setHasHydrated: (hasHydrated: boolean) => {
+        set({ _hasHydrated: hasHydrated });
+      },
 
       register: async (name, email, password) => {
         const existing = get().users.find((u) => u.email.toLowerCase() === email.toLowerCase());
@@ -57,6 +62,11 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'auth-store',
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          state.setHasHydrated(true);
+        }
+      },
       partialize: (state) => ({
         users: state.users,
         currentUser: state.currentUser,

@@ -11,6 +11,8 @@ export interface AuthState {
   users: RegisteredUser[];
   currentUser: User | null;
   token: string | null;
+  _hasHydrated: boolean;
+  setHasHydrated: (hasHydrated: boolean) => void;
   register: (
     name: string,
     email: string,
