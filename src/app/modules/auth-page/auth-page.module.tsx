@@ -1,0 +1,42 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from '@/pkg/libraries/locale';
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui/tabs';
+import { AuthCard } from '@/app/features/auth';
+
+export function AuthPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab') ?? 'login';
+
+  const handleTabChange = (value: string) => {
+    router.replace(value === 'login' ? '/auth' : '/auth?tab=signup');
+  };
+
+  return (
+    <main className="px-5 py-10">
+      <Tabs
+        defaultValue={tab}
+        onValueChange={handleTabChange}
+        className="flex flex-col gap-8 w-full max-w-md mx-auto"
+      >
+        <TabsList className="self-center space-x-4">
+          <TabsTrigger value="login" className="w-22 sm:w-30 cursor-pointer">
+            Log in
+          </TabsTrigger>
+          <TabsTrigger value="signup" className="w-22 sm:w-30 cursor-pointer">
+            Sign up
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="login">
+          <AuthCard variant="login" />
+        </TabsContent>
+        <TabsContent value="signup">
+          <AuthCard variant="signup" />
+        </TabsContent>
+      </Tabs>
+    </main>
+  );
+}

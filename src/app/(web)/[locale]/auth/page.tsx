@@ -1,25 +1,24 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui/tabs';
-import { LoginForm } from '@/app/features/auth';
+import { AuthPage } from '@/app/modules/auth-page';
 
-export default function AuthPage() {
-  return (
-    <main className="px-5 py-10">
-      <Tabs defaultValue="login" className="flex flex-col gap-8 w-full max-w-md mx-auto">
-        <TabsList className="self-center space-x-4">
-          <TabsTrigger value="login" className="w-30">
-            Log in
-          </TabsTrigger>
-          <TabsTrigger value="signup" className="w-30">
-            Sign up
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="login">
-          <LoginForm />
-        </TabsContent>
-        <TabsContent value="signup">
-          <div>Sign up</div>
-        </TabsContent>
-      </Tabs>
-    </main>
-  );
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab: string }>;
+}) {
+  const { tab } = await searchParams;
+  //const translations = await getTranslations({ locale, namespace: 'AuthPage' });
+  const isSignUp = tab === 'signup';
+
+  return {
+    //title: translations('title'),
+    //description: translations('description'),
+    title: isSignUp ? 'Sign up' : 'Log in',
+    description: isSignUp
+      ? 'Create an account to get started'
+      : 'Log in to your account to continue',
+  };
+}
+
+export default function Auth() {
+  return <AuthPage />;
 }
