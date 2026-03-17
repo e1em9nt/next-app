@@ -1,10 +1,7 @@
-import { Languages, LogIn, User } from 'lucide-react';
+import { Languages } from 'lucide-react';
 
-import { LanguageDropdown } from './elements';
-import { buttonVariants, Button } from '@/app/shared/ui';
-
-import { Link } from '@/pkg/libraries/locale';
-import { cn } from '@/pkg/utils/cn';
+import { LanguageDropdown, HeaderAuthButtons } from './elements';
+import { Button } from '@/app/shared/ui';
 
 export default function Header() {
   return (
@@ -16,14 +13,7 @@ export default function Header() {
           </Button>
         }
       />
-      <div className="flex items-center gap-3">
-        <Link href="#" className={cn(buttonVariants({ variant: 'outline' }), 'border')}>
-          <LogIn /> Sign Up
-        </Link>
-        <Link href="#" className={buttonVariants({ variant: 'default' })}>
-          <User /> Log In
-        </Link>
-      </div>
+      <HeaderAuthButtons />
     </header>
   );
 }
