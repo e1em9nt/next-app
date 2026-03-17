@@ -10,13 +10,19 @@ import { Label } from '@/app/shared/ui/label';
 import { EyeOffIcon, EyeIcon } from 'lucide-react';
 
 import { LoginSchema, type LoginSchemaData } from './auth.schemas';
+import { useAuthStore } from '@/app/shared/store';
+import { useRouter } from '@/pkg/libraries/locale';
 
 export const LoginForm = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  const { login: loginUser } = useAuthStore();
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting, isDirty },
   } = useForm<LoginSchemaData>({
     resolver: zodResolver(LoginSchema),
@@ -26,13 +32,17 @@ export const LoginForm = () => {
     },
   });
 
-  const onSubmit = (data: LoginSchemaData) => {
-    console.log(data);
+  const onSubmit = async (data: LoginSchemaData) => {
+    const result = await loginUser(data.email, data.password);
+    if (result.success) {
+      router.push('/products');
+    } else {
+      setError('root', { message: result.error });
+    }
   };
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
-      {/* Email */}
       <div className="space-y-1">
         <Label htmlFor="email" className="leading-5">
           Email <span className="text-destructive">*</span>
@@ -42,12 +52,10 @@ export const LoginForm = () => {
           id="email"
           placeholder="name@example.com"
           {...register('email')}
-          aria-invalid={errors.email ? true : undefined}
         />
         {errors.email && <p className="text-destructive">{errors.email.message}</p>}
       </div>
 
-      {/* Password */}
       <div className="w-full space-y-1">
         <Label htmlFor="password" className="leading-5">
           Password <span className="text-destructive">*</span>
@@ -59,7 +67,6 @@ export const LoginForm = () => {
             className="pr-9 "
             placeholder="Enter your password"
             {...register('password')}
-            aria-invalid={errors.password ? true : undefined}
           />
           <Button
             variant="ghost"
@@ -70,11 +77,13 @@ export const LoginForm = () => {
             {isVisible ? <EyeOffIcon /> : <EyeIcon />}
             <span className="sr-only">{isVisible ? 'Hide password' : 'Show password'}</span>
           </Button>
-          {errors.password && <p className="text-destructive">{errors.password.message}</p>}
         </div>
+        {errors.password && <p className="text-destructive">{errors.password.message}</p>}
       </div>
 
-      <div className="flex justify-center mt-10">
+      {errors.root && <p className="text-destructive">{errors.root.message}</p>}
+
+      <div className="flex justify-center mt-8">
         <Button
           type="submit"
           disabled={isSubmitting || !isDirty}
