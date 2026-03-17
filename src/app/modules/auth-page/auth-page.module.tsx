@@ -1,10 +1,12 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import { useRouter } from '@/pkg/libraries/locale';
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui/tabs';
 import { AuthCard } from '@/app/features/auth';
+import authBackground from '@/app/shared/assets/icon/main-bg.png';
 
 export function AuthPage() {
   const router = useRouter();
@@ -16,7 +18,14 @@ export function AuthPage() {
   };
 
   return (
-    <main className="px-5 py-10">
+    <main className="px-2.5 sm:px-5 py-8 relative min-h-[calc(100vh-64px)]">
+      <Image
+        src={authBackground}
+        alt="Auth Background"
+        fill
+        placeholder="blur"
+        className="object-cover -z-10"
+      />
       <Tabs
         defaultValue={tab}
         onValueChange={handleTabChange}
