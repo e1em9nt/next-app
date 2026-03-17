@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import bgImage from '@/app/shared/assets/icon/main-bg.png';
-import { buttonVariants } from '@/app/shared/ui';
-import { Link } from '@/pkg/libraries/locale';
+import { ViewProductsButton } from './elements';
 
 export default function HomePage() {
   const translations = useTranslations('HomePage');
@@ -25,9 +24,7 @@ export default function HomePage() {
             {translations('description')}
           </p>
         </div>
-        <Link href="/products" className={buttonVariants({ variant: 'default' })}>
-          {translations('actions.viewProducts')}
-        </Link>
+        <ViewProductsButton />
       </div>
     </main>
   );
