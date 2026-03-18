@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { useRouter } from '@/pkg/libraries/locale';
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui/tabs';
@@ -12,6 +13,7 @@ export function AuthPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') ?? 'login';
+  const translations = useTranslations('AuthPage.heading');
 
   const handleTabChange = (value: string) => {
     router.replace(value === 'login' ? '/auth' : '/auth?tab=signup');
@@ -33,10 +35,10 @@ export function AuthPage() {
       >
         <TabsList className="self-center space-x-4">
           <TabsTrigger value="login" className="w-22 sm:w-30 cursor-pointer">
-            Log in
+            {translations('login')}
           </TabsTrigger>
           <TabsTrigger value="signup" className="w-22 sm:w-30 cursor-pointer">
-            Sign up
+            {translations('signup')}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="login">

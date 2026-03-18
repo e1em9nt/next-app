@@ -5,11 +5,13 @@ import { useAuthStore } from '@/app/shared/store';
 import { Link, usePathname, useRouter } from '@/pkg/libraries/locale';
 import { buttonVariants, Button } from '@/app/shared/ui/button';
 import { cn } from '@/pkg/utils/cn';
+import { useTranslations } from 'next-intl';
 
 export const HeaderAuthButtons = () => {
   const pathname = usePathname();
   const { currentUser, logout } = useAuthStore();
   const router = useRouter();
+  const translations = useTranslations('Header.auth');
 
   const isRootPage = pathname === '/' || pathname.match(/^\/[a-z]{2}\/?$/);
   const isProductPage = pathname.includes('/products');
@@ -27,7 +29,7 @@ export const HeaderAuthButtons = () => {
           <span>{currentUser.name}</span>
         </div>
         <Button variant="outline" onClick={handleLogout} className="px-4">
-          Log out
+          {translations('logout')}
         </Button>
       </div>
     );
@@ -40,10 +42,10 @@ export const HeaderAuthButtons = () => {
           href="/auth?tab=signup"
           className={cn(buttonVariants({ variant: 'outline' }), 'border w-22 sm:w-28')}
         >
-          <LogIn /> Sign Up
+          <LogIn /> {translations('signup')}
         </Link>
         <Link href="/auth" className={cn(buttonVariants({ variant: 'default' }), 'w-22 sm:w-28')}>
-          <User /> Log In
+          <User /> {translations('login')}
         </Link>
       </div>
     );

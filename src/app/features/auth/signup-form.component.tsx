@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/app/shared/ui/button';
 import { Input } from '@/app/shared/ui/input';
 import { Label } from '@/app/shared/ui/label';
 import { EyeOffIcon, EyeIcon } from 'lucide-react';
 
-import { SignupSchema, type SignupSchemaData } from './auth.schemas';
+import { createSignupSchema, type SignupSchemaData } from './auth.schemas';
 import { useAuthStore } from '@/app/shared/store';
 import { useRouter } from '@/pkg/libraries/locale';
 
@@ -18,6 +19,8 @@ export const SignupForm = () => {
 
   const { register: registerUser } = useAuthStore();
   const router = useRouter();
+  const translations = useTranslations('SignupForm');
+  const schema = createSignupSchema(translations);
 
   const {
     register,
@@ -25,7 +28,7 @@ export const SignupForm = () => {
     setError,
     formState: { errors, isSubmitting, isDirty },
   } = useForm<SignupSchemaData>({
-    resolver: zodResolver(SignupSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       name: '',
       email: '',
@@ -39,7 +42,7 @@ export const SignupForm = () => {
     if (result.success) {
       router.push('/products');
     } else {
-      setError('root', { message: result.error });
+      setError('root', { message: translations(result.error!) });
     }
   };
 
@@ -47,12 +50,12 @@ export const SignupForm = () => {
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="space-y-1">
         <Label htmlFor="username" className="leading-5">
-          Username <span className="text-destructive">*</span>
+          {translations('name')} <span className="text-destructive">*</span>
         </Label>
         <Input
           id="username"
           type="text"
-          placeholder="Enter your username"
+          placeholder={translations('placeholder.name')}
           {...register('name')}
           aria-invalid={errors.name ? true : undefined}
         />
@@ -60,7 +63,7 @@ export const SignupForm = () => {
       </div>
       <div className="space-y-1">
         <Label htmlFor="email" className="leading-5">
-          Email <span className="text-destructive">*</span>
+          {translations('email')} <span className="text-destructive">*</span>
         </Label>
         <Input
           type="email"
@@ -74,14 +77,14 @@ export const SignupForm = () => {
 
       <div className="w-full space-y-1">
         <Label htmlFor="password" className="leading-5">
-          Password <span className="text-destructive">*</span>
+          {translations('password')} <span className="text-destructive">*</span>
         </Label>
         <div className="relative">
           <Input
             id="password"
             type={isVisible ? 'text' : 'password'}
             className="pr-9"
-            placeholder="Enter your password"
+            placeholder={translations('placeholder.password')}
             {...register('password')}
             aria-invalid={errors.password ? true : undefined}
           />
@@ -92,7 +95,11 @@ export const SignupForm = () => {
             className="text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-1.5 right-1.5 rounded-l-none hover:bg-transparent"
           >
             {isVisible ? <EyeOffIcon /> : <EyeIcon />}
-            <span className="sr-only">{isVisible ? 'Hide password' : 'Show password'}</span>
+            <span className="sr-only">
+              {isVisible
+                ? translations('actions.hidePassword')
+                : translations('actions.showPassword')}
+            </span>
           </Button>
           {errors.password && <p className="text-destructive">{errors.password.message}</p>}
         </div>
@@ -100,13 +107,13 @@ export const SignupForm = () => {
 
       <div className="w-full space-y-1">
         <Label htmlFor="confirmPassword" className="leading-5">
-          Confirm Password <span className="text-destructive">*</span>
+          {translations('confirmPassword')} <span className="text-destructive">*</span>
         </Label>
         <Input
           id="confirmPassword"
           type="password"
           className="pr-9"
-          placeholder="Enter your password again"
+          placeholder={translations('placeholder.confirmPassword')}
           {...register('confirmPassword')}
           aria-invalid={errors.confirmPassword ? true : undefined}
         />
@@ -123,7 +130,7 @@ export const SignupForm = () => {
           disabled={isSubmitting || !isDirty}
           className="w-full sm:w-1/2 uppercase font-semibold cursor-pointer disabled:cursor-not-allowed"
         >
-          {isSubmitting ? 'Signing up...' : 'Sign up'}
+          {isSubmitting ? translations('actions.signingUp') : translations('actions.signup')}
         </Button>
       </div>
     </form>

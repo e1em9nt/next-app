@@ -23,7 +23,7 @@ export const useAuthStore = create<AuthState>()(
       register: async (name, email, password) => {
         const existing = get().users.find((u) => u.email.toLowerCase() === email.toLowerCase());
         if (existing) {
-          return { success: false, error: 'An account with this email already exists' };
+          return { success: false, error: 'errors.emailExists' };
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -41,12 +41,12 @@ export const useAuthStore = create<AuthState>()(
       login: async (email, password) => {
         const user = get().users.find((u) => u.email.toLowerCase() === email.toLowerCase());
         if (!user) {
-          return { success: false, error: 'Invalid email or password' };
+          return { success: false, error: 'errors.credentialsInvalid' };
         }
 
         const isMatch = await bcrypt.compare(password, user.hashedPassword);
         if (!isMatch) {
-          return { success: false, error: 'Invalid email or password' };
+          return { success: false, error: 'errors.credentialsInvalid' };
         }
 
         set({
