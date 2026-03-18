@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 
 export const HeaderAuthButtons = () => {
   const pathname = usePathname();
-  const { currentUser, logout } = useAuthStore();
+  const { currentUser, logout, _hasHydrated } = useAuthStore();
   const router = useRouter();
   const translations = useTranslations('Header.auth');
 
@@ -21,7 +21,9 @@ export const HeaderAuthButtons = () => {
     router.push('/');
   }
 
-  if (isProductPage && currentUser) {
+  if (!_hasHydrated) return null;
+
+  if ((isProductPage && currentUser) || (isRootPage && currentUser)) {
     return (
       <div className="flex items-center gap-5">
         <div className="flex items-center gap-2 text-sm">
@@ -35,7 +37,7 @@ export const HeaderAuthButtons = () => {
     );
   }
 
-  if (isRootPage) {
+  if (isRootPage && !currentUser) {
     return (
       <div className="flex items-center gap-3">
         <Link
