@@ -21,7 +21,8 @@ export const ProductCard = ({ product, priority, variant = 'compact' }: ProductC
             height={500}
             src={product.image}
             alt={product.title}
-            priority={isCompact && priority}
+            quality={60}
+            priority={!isCompact || priority}
             className={`${isCompact && 'transition-transform duration-300 group-hover:scale-105'} h-59.5 w-full object-contain`}
           />
         </CardImageContainer>

@@ -1,9 +1,11 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/pkg/libraries/locale';
+import { useAuthStore } from '@/app/shared/store';
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui/tabs';
 import { AuthCard } from '@/app/features/auth';
@@ -14,10 +16,19 @@ export function AuthPage() {
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') ?? 'login';
   const translations = useTranslations('AuthPage.heading');
+  const { currentUser, _hasHydrated } = useAuthStore();
+
+  useEffect(() => {
+    if (_hasHydrated && currentUser) {
+      router.replace('/products');
+    }
+  }, [currentUser, _hasHydrated, router]);
 
   const handleTabChange = (value: string) => {
     router.replace(value === 'login' ? '/auth' : '/auth?tab=signup');
   };
+
+  if (!_hasHydrated || currentUser) return null;
 
   return (
     <main className="px-2.5 sm:px-5 py-8 relative min-h-[calc(100vh-64px)]">
@@ -25,6 +36,7 @@ export function AuthPage() {
         src={authBackground}
         alt="Auth Background"
         fill
+        priority
         placeholder="blur"
         className="object-cover -z-10"
       />
