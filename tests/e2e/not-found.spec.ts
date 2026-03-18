@@ -12,7 +12,7 @@ test.describe('Error Handling', () => {
     const homeButton = page.getByRole('link', { name: /back to home/i });
     await expect(homeButton).toBeVisible();
     await homeButton.click();
-    await page.waitForURL('**/en', { timeout: 10000 });
-    await expect(page).toHaveURL('**/en');
+    await page.waitForURL(/\/en$/, { timeout: 10000 });
+    await expect(page).toHaveURL(/\/en$/);
   });
 });

@@ -7,7 +7,8 @@ declare const messages: {
         "description": "Experience a curated collection where form meets function. Minimalist design, maximum impact.",
         "heading": "Refined by Design.",
         "actions": {
-            "viewProducts": "View Products"
+            "viewProducts": "View Products",
+            "pendingViewProducts": "Loading..."
         }
     },
     "Header": {

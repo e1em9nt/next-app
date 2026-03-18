@@ -4,7 +4,8 @@ test.describe('Product Navigation', () => {
   test.beforeEach(async ({ context }) => {
     await context.addInitScript(() => {
       localStorage.setItem(
-        'auth-store', JSON.stringify({
+        'auth-store',
+        JSON.stringify({
           state: { currentUser: { name: 'Test User' }, token: 'test-token' },
           version: 0,
         }),

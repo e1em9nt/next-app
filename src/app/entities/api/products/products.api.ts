@@ -24,5 +24,9 @@ export const getProductById = cache(async (id: string): Promise<Product | null> 
   const text = await response.text();
   if (!text) return null;
 
-  return JSON.parse(text) as Product;
+  try {
+    return JSON.parse(text) as Product;
+  } catch {
+    return null;
+  }
 });
