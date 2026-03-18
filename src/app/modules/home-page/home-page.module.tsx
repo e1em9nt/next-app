@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import bgImage from '@/app/shared/assets/icon/main-bg.png';
 import { ViewProductsButton } from './elements';
 
-export default function HomePage() {
-  const translations = useTranslations('HomePage');
+export default async function HomePage() {
+  const translations = await getTranslations('HomePage');
 
   return (
     <main className="relative h-[calc(100vh-64px)] overflow-hidden px-5">
@@ -12,6 +12,7 @@ export default function HomePage() {
         src={bgImage}
         alt="Minimalistic Background"
         fill
+        priority
         placeholder="blur"
         className="-z-10 object-cover"
       />

@@ -4,7 +4,8 @@
         "description": "Erleben Sie eine kuratierte Kollektion, in der Form und Funktion perfekt harmonieren. Minimalistisches Design, maximale Wirkung.",
         "heading": "Durchdachtes Design.",
         "actions": {
-            "viewProducts": "Produkte ansehen"
+            "viewProducts": "Produkte ansehen",
+            "pendingViewProducts": "Wird geladen..."
         }
     },
     "Header": {
