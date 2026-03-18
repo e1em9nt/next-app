@@ -4,13 +4,15 @@ import { useTranslations } from 'next-intl';
 import { useProducts } from '@/app/entities/api/products';
 import { ProductCard } from '@/app/features/product-card';
 import { useRequireAuth } from '@/app/shared/hooks';
+import { Spinner } from '@/app/shared/ui';
 
 export const ProductListPage = () => {
   const { isAuthenticated, isLoading } = useRequireAuth();
   const { data: products = [] } = useProducts();
   const t = useTranslations('Products');
 
-  if (isLoading || !isAuthenticated) return null;
+  if (isLoading) return <Spinner />;
+  if (!isAuthenticated) return null;
 
   return (
     <main className="mx-8 sm:mx-10 md:mx-12 my-6 md:my-8 space-y-7">
