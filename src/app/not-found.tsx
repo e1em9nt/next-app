@@ -18,7 +18,7 @@ export default function NotFound() {
             The page you&apos;re looking for isn&apos;t found, we suggest you back to home.
           </p>
           <Link href="/" className={buttonVariants({ variant: 'default' })}>
-            Back to home page
+            Back to home
           </Link>
         </div>
       </body>
