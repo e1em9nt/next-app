@@ -4,9 +4,6 @@ import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  // #region agent log
-  console.log('[DEBUG:a1bc1e] generateMetadata called', JSON.stringify({id, hypothesisId: 'D'}));
-  // #endregion
   const product = await getProductById(id);
 
   if (!product) notFound();
@@ -19,9 +16,6 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  // #region agent log
-  console.log('[DEBUG:a1bc1e] ProductDetails called', JSON.stringify({id, hypothesisId: 'D'}));
-  // #endregion
   const product = await getProductById(id);
 
   if (!product) notFound();
