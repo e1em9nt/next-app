@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/pkg/libraries/locale';
+import { useRouter } from '@/pkg/locale';
 import { useAuthStore } from '@/app/shared/store';
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui/tabs';

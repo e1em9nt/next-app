@@ -1,6 +1,6 @@
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { routing } from '@/pkg/libraries/locale';
+import { routing } from '@/pkg/locale';
 
 import { QueryProvider } from '@/app/shared/ui';
 import { Header } from '@/app/widgets/header';

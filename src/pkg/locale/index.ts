@@ -1,3 +1,3 @@
 export { routing } from './routing';
-export { getRequestConfig } from 'next-intl/server';
+export { default as getRequestConfig } from './request';
 export { Link, redirect, usePathname, useRouter, getPathname } from './navigation';

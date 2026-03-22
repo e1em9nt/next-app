@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type ReactNode } from 'react';
-import { usePathname, useRouter } from '@/pkg/libraries/locale';
+import { usePathname, useRouter } from '@/pkg/locale';
 import { useParams } from 'next/navigation';
 
 import {

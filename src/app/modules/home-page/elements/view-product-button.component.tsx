@@ -2,7 +2,7 @@
 
 import { useTransition } from 'react';
 import { useAuthStore } from '@/app/shared/store';
-import { useRouter } from '@/pkg/libraries/locale';
+import { useRouter } from '@/pkg/locale';
 import { Button } from '@/app/shared/ui';
 import { useTranslations } from 'next-intl';
 

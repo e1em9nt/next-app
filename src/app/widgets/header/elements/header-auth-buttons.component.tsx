@@ -2,7 +2,7 @@
 
 import { LogIn, User } from 'lucide-react';
 import { useAuthStore } from '@/app/shared/store';
-import { Link, usePathname, useRouter } from '@/pkg/libraries/locale';
+import { Link, usePathname, useRouter } from '@/pkg/locale';
 import { buttonVariants, Button } from '@/app/shared/ui/button';
 import { cn } from '@/pkg/utils/cn';
 import { useTranslations } from 'next-intl';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Link, useRouter } from '@/pkg/libraries/locale';
+import { Link, useRouter } from '@/pkg/locale';
 import { buttonVariants, Button } from '@/app/shared/ui';
 import { ArrowRightIcon } from 'lucide-react';
 import { cn } from '@/pkg/utils/cn';

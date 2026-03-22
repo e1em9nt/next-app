@@ -12,7 +12,7 @@ import { EyeOffIcon, EyeIcon } from 'lucide-react';
 
 import { createLoginSchema, type LoginSchemaData } from './auth.schemas';
 import { useAuthStore } from '@/app/shared/store';
-import { useRouter } from '@/pkg/libraries/locale';
+import { useRouter } from '@/pkg/locale';
 
 export const LoginForm = () => {
   const [isVisible, setIsVisible] = useState(false);

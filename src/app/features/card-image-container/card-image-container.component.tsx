@@ -1,4 +1,4 @@
-import { Link } from '@/pkg/libraries/locale';
+import { Link } from '@/pkg/locale';
 import { CardImageContainerProps } from './card-image-container.interface';
 
 export const CardImageContainer = ({ children, isCompact, href = '' }: CardImageContainerProps) => {

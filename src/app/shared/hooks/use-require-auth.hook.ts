@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRouter } from '@/pkg/libraries/locale';
+import { useRouter } from '@/pkg/locale';
 import { useAuthStore } from '@/app/shared/store';
 
 export const useRequireAuth = () => {
