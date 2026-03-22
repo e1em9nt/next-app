@@ -15,7 +15,7 @@ export const getProductById = cache(async (id: string): Promise<Product | null> 
     cache: 'no-store',
   });
 
-  if (!response.ok) throw new Error('Failed to fetch product');
+  if (!response.ok) return null;
 
   const text = await response.text();
   if (!text) return null;
