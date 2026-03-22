@@ -1,0 +1,79 @@
+{
+    "HomePage": {
+        "title": "Produkte",
+        "description": "Erleben Sie eine kuratierte Kollektion, in der Form und Funktion perfekt harmonieren. Minimalistisches Design, maximale Wirkung.",
+        "heading": "Durchdachtes Design.",
+        "actions": {
+            "viewProducts": "Produkte ansehen",
+            "pendingViewProducts": "Wird geladen..."
+        }
+    },
+    "Header": {
+        "auth": {
+            "login": "Anmelden",
+            "signup": "Registrieren",
+            "logout": "Abmelden"
+        }
+    },
+    "Products": {
+        "heading": "Produkte",
+        "rating": {
+            "rate": "Bewertung",
+            "count": "Rezensionen"
+        }
+    },
+    "AuthPage": {
+        "heading": {
+            "login": "Anmeldung",
+            "signup": "Registrieren"
+        },
+        "description": {
+            "login": "Melden Sie sich an, um fortzufahren",
+            "signup": "Erstellen Sie ein Konto, um zu beginnen"
+        }
+    },
+    "SignupForm": {
+        "name": "Benutzername",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "confirmPassword": "Passwort bestätigen",
+        "placeholder": {
+            "name": "Namen eingeben",
+            "password": "Passwort eingeben",
+            "confirmPassword": "Passwort erneut eingeben"
+        },
+        "actions": {
+            "signup": "Registrieren",
+            "signingUp": "Wird registriert...",
+            "hidePassword": "Passwort ausblenden",
+            "showPassword": "Passwort anzeigen"
+        },
+        "errors": {
+            "nameRequired": "Name ist erforderlich",
+            "emailRequired": "Ungültige E-Mail-Adresse",
+            "passwordRequired": "Das Passwort muss mindestens 8 Zeichen lang sein",
+            "confirmPasswordRequired": "Bitte bestätigen Sie Ihr Passwort",
+            "confirmPasswordMatch": "Passwörter stimmen nicht überein",
+            "emailExists": "Ein Konto mit dieser E-Mail-Adresse existiert bereits"
+        }
+    },
+    "LogInForm": {
+        "email": "E-Mail",
+        "password": "Passwort",
+        "placeholder": {
+            "password": "Passwort eingeben"
+        },
+        "actions": {
+            "login": "Anmelden",
+            "loggingIn": "Wird angemeldet...",
+            "hidePassword": "Passwort ausblenden",
+            "showPassword": "Passwort anzeigen"
+        },
+        "errors": {
+            "emailRequired": "E-Mail ist erforderlich",
+            "emailExists": "Ein Konto mit dieser E-Mail existiert bereits",
+            "passwordRequired": "Passwort ist erforderlich",
+            "credentialsInvalid": "Ungültige E-Mail oder Passwort"
+        }
+    }
+}

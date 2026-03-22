@@ -1,0 +1,79 @@
+{
+    "HomePage": {
+        "title": "Products",
+        "description": "Experience a curated collection where form meets function. Minimalist design, maximum impact.",
+        "heading": "Refined by Design.",
+        "actions": {
+            "viewProducts": "View Products",
+            "pendingViewProducts": "Loading..."
+        }
+    },
+    "Header": {
+        "auth": {
+            "login": "Log in",
+            "signup": "Sign up",
+            "logout": "Log out"
+        }
+    },
+    "Products": {
+        "heading": "Products",
+        "rating": {
+            "rate": "Rating",
+            "count": "Reviews"
+        }
+    },
+    "AuthPage": {
+        "heading": {
+            "login": "Log in",
+            "signup": "Sign up"
+        },
+        "description": {
+            "login": "Log in to your account to continue",
+            "signup": "Create an account to get started"
+        }
+    },
+    "LogInForm": {
+        "email": "Email",
+        "password": "Password",
+        "placeholder": {
+            "password": "Enter your password"
+        },
+        "actions": {
+            "login": "Login",
+            "loggingIn": "Logging in...",
+            "hidePassword": "Hide password",
+            "showPassword": "Show password"
+        },
+        "errors": {
+            "emailRequired": "Email is required",
+            "emailExists": "An account with this email already exists",
+            "passwordRequired": "Password is required",
+            "credentialsInvalid": "Invalid email or password"
+        }
+    },
+    "SignupForm": {
+        "name": "Username",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "placeholder": {
+            "name": "Enter your name",
+            "password": "Enter your password",
+            "confirmPassword": "Enter your password again"
+        },
+        "actions": {
+            "signup": "Sign up",
+            "signingUp": "Signing up...",
+            "hidePassword": "Hide password",
+            "showPassword": "Show password"
+        },
+        "errors": {
+            "nameRequired": "Name is required",
+            "emailRequired": "Invalid email address",
+            "passwordRequired": "Password must be at least 8 characters long",
+            "confirmPasswordRequired": "Please confirm your password",
+            "confirmPasswordMatch": "Passwords do not match",
+            "emailExists": "An account with this email already exists"
+        }
+    }
+}
