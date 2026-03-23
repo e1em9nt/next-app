@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { AuthPage } from '@/app/modules/auth-page';
+import { AuthPage } from '@/app/modules/auth';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({
