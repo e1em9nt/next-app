@@ -1,1 +1,1 @@
-export { AuthPage } from './auth-page.module';
+export { AuthPage } from './auth.module';

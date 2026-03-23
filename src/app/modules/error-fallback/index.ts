@@ -1,1 +1,1 @@
-export { ErrorFallback } from './error-fallback.component';
+export { ErrorFallback } from './error-fallback.module';

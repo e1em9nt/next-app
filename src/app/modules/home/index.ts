@@ -1,1 +1,1 @@
-export { default as HomePage } from './home-page.module';
+export { default as HomePage } from './home.module';
