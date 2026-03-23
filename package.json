@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" \"tests/**/*.{ts,tsx}\" --fix",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\" \"tests/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
-    "format": "yarn run type-check && yarn run lint && yarn run prettier",
+    "format": "npm run type-check && npm run lint && npm run prettier",
     "devsafe": "rm -rf .next && next dev",
     "dev": "next dev --turbo",
     "build": "next build",

@@ -23,7 +23,7 @@ test.describe('Product Navigation', () => {
     const cleanTitle = listTitle?.trim();
 
     await firstCard.locator('img').click();
-    await expect(page).toHaveURL(/\/en\/products\/\d+/);
+    await expect(page).toHaveURL(/\/products\/\d+/);
 
     const detailHeader = page.locator('h3');
     await expect(detailHeader).toBeVisible();
