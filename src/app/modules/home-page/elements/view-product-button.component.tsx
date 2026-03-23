@@ -3,7 +3,7 @@
 import { useTransition } from 'react';
 import { useAuthStore } from '@/app/shared/store';
 import { useRouter } from '@/pkg/locale';
-import { Button } from '@/app/shared/ui';
+import { Button } from '@/pkg/theme/ui/button';
 import { useTranslations } from 'next-intl';
 
 export const ViewProductsButton = () => {

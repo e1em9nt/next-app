@@ -3,8 +3,8 @@
 import { LogIn, User } from 'lucide-react';
 import { useAuthStore } from '@/app/shared/store';
 import { Link, usePathname, useRouter } from '@/pkg/locale';
-import { buttonVariants, Button } from '@/app/shared/ui/button';
-import { cn } from '@/pkg/utils/cn';
+import { buttonVariants, Button } from '@/pkg/theme/ui/button';
+import { cn } from '@/pkg/theme/lib/utils';
 import { useTranslations } from 'next-intl';
 
 export const HeaderAuthButtons = () => {

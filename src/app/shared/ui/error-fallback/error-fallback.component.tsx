@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { buttonVariants, Button } from '../button';
-import { cn } from '@/pkg/utils/cn';
+import { buttonVariants, Button } from '@/pkg/theme/ui/button';
+import { cn } from '@/pkg/theme/lib/utils';
 
 interface ErrorFallbackProps {
   reset?: () => void;

@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-
-import { Button } from '@/app/shared/ui/button';
-import { Input } from '@/app/shared/ui/input';
-import { Label } from '@/app/shared/ui/label';
 import { EyeOffIcon, EyeIcon } from 'lucide-react';
+
+import { Button } from '@/pkg/theme/ui/button';
+import { Input } from '@/pkg/theme/ui/input';
+import { Label } from '@/pkg/theme/ui/label';
 
 import { createSignupSchema, type SignupSchemaData } from './auth.schemas';
 import { useAuthStore } from '@/app/shared/store';

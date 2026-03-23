@@ -1,9 +1,10 @@
 'use client';
 
-import { Link, useRouter } from '@/pkg/locale';
-import { buttonVariants, Button } from '@/app/shared/ui';
 import { ArrowRightIcon } from 'lucide-react';
-import { cn } from '@/pkg/utils/cn';
+
+import { Link, useRouter } from '@/pkg/locale';
+import { buttonVariants, Button } from '@/pkg/theme/ui/button';
+import { cn } from '@/pkg/theme/lib/utils';
 import { CardActionProps } from './card-action.interface';
 
 export const ProductCardAction = ({ isCompact, href = '' }: CardActionProps) => {

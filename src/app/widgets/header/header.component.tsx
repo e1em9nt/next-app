@@ -1,7 +1,7 @@
 import { Languages } from 'lucide-react';
 
 import { LanguageDropdown, HeaderAuthButtons } from './elements';
-import { Button } from '@/app/shared/ui';
+import { Button } from '@/pkg/theme/ui/button';
 
 export default function Header() {
   return (

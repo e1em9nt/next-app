@@ -10,7 +10,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from '@/app/shared/ui';
+} from '@/pkg/theme/ui/dropdown-menu';
 
 type Props = {
   trigger: ReactNode;

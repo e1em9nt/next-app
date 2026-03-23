@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Card, CardContent } from '@/app/shared/ui/card';
-import { Badge } from '@/app/shared/ui/badge';
+import { Card, CardContent } from '@/pkg/theme/ui/card';
+import { Badge } from '@/pkg/theme/ui/badge';
 import { useFormatter, useTranslations } from 'next-intl';
 import { ProductCardProps } from './product-card.interface';
 import { CardImageContainer } from '../card-image-container';

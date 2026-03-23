@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/app/shared/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/pkg/theme/ui/card';
 import { LoginForm } from './login-form.component';
 import { SignupForm } from './signup-form.component';
 import { AuthCardProps } from './auth-card.interface';

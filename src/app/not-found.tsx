@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { buttonVariants } from '@/app/shared/ui';
+import { buttonVariants } from '@/pkg/theme/ui/button';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

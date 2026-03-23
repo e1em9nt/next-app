@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from '@/pkg/locale';
 import { useAuthStore } from '@/app/shared/store';
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/shared/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/pkg/theme/ui/tabs';
 import { AuthCard } from '@/app/features/auth';
 import authBackground from '@/app/shared/assets/icon/main-bg.png';
 
