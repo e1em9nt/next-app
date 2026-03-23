@@ -2,9 +2,9 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/pkg/locale';
 
-import { QueryProvider } from '@/app/shared/ui';
+import { RestApiProvider } from '@/pkg/rest-api';
 import { Header } from '@/app/widgets/header';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -20,7 +20,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function MainLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: Readonly<{
@@ -28,18 +28,21 @@ export default async function MainLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
+  setRequestLocale(locale);
+
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body>
         <NextIntlClientProvider>
-          <QueryProvider>
+          <RestApiProvider>
             <Header />
             {children}
-          </QueryProvider>
+          </RestApiProvider>
         </NextIntlClientProvider>
       </body>
     </html>
