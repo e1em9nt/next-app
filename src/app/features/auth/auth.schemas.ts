@@ -1,10 +1,10 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const createLoginSchema = (t: (key: string) => string) =>
   z.object({
     email: z.email(t('errors.emailRequired')),
     password: z.string().nonempty(t('errors.passwordRequired')),
-  });
+  })
 
 export const createSignupSchema = (t: (key: string) => string) =>
   z
@@ -17,7 +17,7 @@ export const createSignupSchema = (t: (key: string) => string) =>
     .refine((data) => data.password === data.confirmPassword, {
       message: t('errors.confirmPasswordMatch'),
       path: ['confirmPassword'],
-    });
+    })
 
-export type LoginSchemaData = z.infer<ReturnType<typeof createLoginSchema>>;
-export type SignupSchemaData = z.infer<ReturnType<typeof createSignupSchema>>;
+export type LoginSchemaData = z.infer<ReturnType<typeof createLoginSchema>>
+export type SignupSchemaData = z.infer<ReturnType<typeof createSignupSchema>>

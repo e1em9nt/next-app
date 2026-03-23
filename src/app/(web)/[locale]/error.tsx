@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import { ErrorFallback } from '@/app/shared/ui/error-fallback';
+import { ErrorFallback } from '@/app/modules/error-fallback'
 
 export default function Error() {
-  return <ErrorFallback />;
+  return <ErrorFallback />
 }
