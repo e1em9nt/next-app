@@ -1,19 +1,20 @@
-import { Languages } from 'lucide-react';
+import { Languages } from 'lucide-react'
 
-import { LanguageDropdown, HeaderAuthButtons } from './elements';
-import { Button } from '@/app/shared/ui';
+import { Button } from '@/pkg/theme/ui/button'
+
+import { HeaderAuthButtons, LanguageDropdown } from './elements'
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-end-safe gap-7 px-5 sm:px-8 xl:px-10 py-4 shadow-sm">
+    <header className='flex items-center justify-end-safe gap-7 px-5 py-4 shadow-sm sm:px-8 xl:px-10'>
       <LanguageDropdown
         trigger={
-          <Button variant="ghost" size="icon">
+          <Button variant='ghost' size='icon'>
             <Languages />
           </Button>
         }
       />
       <HeaderAuthButtons />
     </header>
-  );
+  )
 }

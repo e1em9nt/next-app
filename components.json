@@ -13,13 +13,17 @@
   "iconLibrary": "lucide",
   "rtl": false,
   "aliases": {
-    "components": "@/app/shared/ui",
-    "utils": "@/pkg/utils/cn",
-    "ui": "@/app/shared/ui",
-    "lib": "@/pkg/utils/cn",
-    "hooks": "@/app/shared/hooks"
+    "components": "@/pkg/theme/components",
+    "utils": "@/pkg/theme/lib/utils",
+    "ui": "@/pkg/theme/ui",
+    "lib": "@/pkg/theme/lib",
+    "hooks": "@/pkg/theme/hooks"
   },
-  "menuColor": "default",
-  "menuAccent": "subtle",
-  "registries": {}
+  "registries": {
+    "@shadcn-studio": "https://shadcnstudio.com/r/{name}.json",
+    "@ss-components": "https://shadcnstudio.com/r/components/{name}.json",
+    "@ss-blocks": "https://shadcnstudio.com/r/blocks/{name}.json",
+    "@ss-themes": "https://shadcnstudio.com/r/themes/{name}.json",
+    "@aceternity": "https://ui.aceternity.com/registry/{name}.json"
+  }
 }

@@ -1,20 +1,27 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/app/shared/ui/card';
-import { LoginForm } from './login-form.component';
-import { SignupForm } from './signup-form.component';
-import { AuthCardProps } from './auth-card.interface';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
+
+import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/theme/ui/card'
+
+import { LoginForm } from './login-form.component'
+import { SignupForm } from './signup-form.component'
+
+type AuthCardVariant = 'login' | 'signup'
+
+interface AuthCardProps {
+  variant: AuthCardVariant
+}
 
 export const AuthCard = ({ variant }: AuthCardProps) => {
-  const translations = useTranslations('AuthPage.heading');
+  const translations = useTranslations('AuthPage.heading')
 
   return (
-    <Card className="sm:px-5 py-6 pb-9 border-none shadow-lg sm:max-w-lg">
-      <CardHeader className="gap-6">
-        <CardTitle className="mb-1.5 text-xl sm:text-2xl text-center">
+    <Card className='border-none py-6 pb-9 shadow-lg sm:max-w-lg sm:px-5'>
+      <CardHeader className='gap-6'>
+        <CardTitle className='mb-1.5 text-center text-xl sm:text-2xl'>
           {variant === 'login' ? translations('login') : translations('signup')}
         </CardTitle>
       </CardHeader>
       <CardContent>{variant === 'login' ? <LoginForm /> : <SignupForm />}</CardContent>
     </Card>
-  );
-};
+  )
+}

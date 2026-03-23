@@ -1,1 +1,1 @@
-export { useRequireAuth } from './use-require-auth.hook';
+export { useRequireAuth } from './use-require-auth.hook'
