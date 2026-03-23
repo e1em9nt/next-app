@@ -1,6 +1,6 @@
 'use client';
 
-import { ErrorFallback } from './shared/ui/error-fallback';
+import { ErrorFallback } from './modules/error-fallback';
 
 export default function GlobalError() {
   return (
