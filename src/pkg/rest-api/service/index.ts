@@ -1,1 +1,1 @@
-export { getQueryClient } from './rest-api.service';
+export { getQueryClient } from './rest-api.service'

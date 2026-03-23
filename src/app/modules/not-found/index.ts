@@ -1,1 +1,1 @@
-export { default as NotFoundPage } from './not-found.module';
+export { default as NotFoundPage } from './not-found.module'

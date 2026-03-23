@@ -1,19 +1,18 @@
-import { getRequestConfig } from 'next-intl/server';
-import { hasLocale, Formats } from 'next-intl';
-import { routing } from './routing';
+import { Formats, hasLocale } from 'next-intl'
+import { getRequestConfig } from 'next-intl/server'
+
+import { routing } from './routing'
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  const requestedLocale = await requestLocale;
-  const locale = hasLocale(routing.locales, requestedLocale)
-    ? requestedLocale
-    : routing.defaultLocale;
+  const requestedLocale = await requestLocale
+  const locale = hasLocale(routing.locales, requestedLocale) ? requestedLocale : routing.defaultLocale
 
   return {
     locale,
     messages: (await import(`../../../translations/${locale}.json`)).default,
     formats,
-  };
-});
+  }
+})
 
 export const formats = {
   dateTime: {
@@ -34,4 +33,4 @@ export const formats = {
       type: 'conjunction',
     },
   },
-} satisfies Formats;
+} satisfies Formats

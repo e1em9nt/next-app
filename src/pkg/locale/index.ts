@@ -1,3 +1,3 @@
-export { routing } from './routing';
-export { default as getRequestConfig } from './request';
-export { Link, redirect, usePathname, useRouter, getPathname } from './navigation';
+export { getPathname, Link, redirect, usePathname, useRouter } from './navigation'
+export { default as getRequestConfig } from './request'
+export { routing } from './routing'

@@ -1,20 +1,22 @@
-import Image from 'next/image';
-import { Card, CardContent } from '@/pkg/theme/ui/card';
-import { Badge } from '@/pkg/theme/ui/badge';
-import { useFormatter, useTranslations } from 'next-intl';
-import { ProductCardProps } from './product-card.interface';
-import { CardImageContainer } from './elements';
-import { ProductCardAction } from './elements';
+import Image from 'next/image'
+import { useFormatter, useTranslations } from 'next-intl'
+
+import { Badge } from '@/pkg/theme/ui/badge'
+import { Card, CardContent } from '@/pkg/theme/ui/card'
+
+import { CardImageContainer } from './elements'
+import { ProductCardAction } from './elements'
+import { ProductCardProps } from './product-card.interface'
 
 export const ProductCard = ({ product, priority, variant = 'compact' }: ProductCardProps) => {
-  const formatCurrency = useFormatter();
-  const t = useTranslations('Products.rating');
+  const formatCurrency = useFormatter()
+  const t = useTranslations('Products.rating')
 
-  const isCompact = variant === 'compact';
+  const isCompact = variant === 'compact'
 
   return (
-    <Card className="group h-full overflow-hidden shadow-none px-2">
-      <CardContent className="space-y-3.5">
+    <Card className='group h-full overflow-hidden px-2 shadow-none'>
+      <CardContent className='space-y-3.5'>
         <CardImageContainer isCompact={isCompact} href={`/products/${product.id}`}>
           <Image
             width={500}
@@ -26,23 +28,21 @@ export const ProductCard = ({ product, priority, variant = 'compact' }: ProductC
             className={`${isCompact && 'transition-transform duration-300 group-hover:scale-105'} h-59.5 w-full object-contain`}
           />
         </CardImageContainer>
-        <div className="flex items-center justify-between gap-1.5">
-          <div className="text-foreground font-semibold text-lg">
+        <div className='flex items-center justify-between gap-1.5'>
+          <div className='text-foreground text-lg font-semibold'>
             {formatCurrency.number(product.price, {
               style: 'currency',
               currency: 'USD',
               maximumFractionDigits: 2,
             })}
           </div>
-          <Badge variant="secondary" className="sm:text-sm">
+          <Badge variant='secondary' className='sm:text-sm'>
             {product.category}
           </Badge>
         </div>
-        <h3 className={`${isCompact && 'line-clamp-2 h-13'} text-lg font-medium md:text-xl`}>
-          {product.title}
-        </h3>
-        {!isCompact && <p className="text-muted-foreground">{product.description}</p>}
-        <div className="flex items-center justify-between gap-4 flex-wrap">
+        <h3 className={`${isCompact && 'line-clamp-2 h-13'} text-lg font-medium md:text-xl`}>{product.title}</h3>
+        {!isCompact && <p className='text-muted-foreground'>{product.description}</p>}
+        <div className='flex flex-wrap items-center justify-between gap-4'>
           <div>
             <span>
               {t('rate')}: {product.rating.rate}
@@ -56,5 +56,5 @@ export const ProductCard = ({ product, priority, variant = 'compact' }: ProductC
         </div>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
