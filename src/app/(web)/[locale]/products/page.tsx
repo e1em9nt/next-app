@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import { getQueryClient } from '@/pkg/rest-api';
 
-import { getProducts } from '@/app/entities/api/products';
+import { getProducts } from '@/app/entities/api';
 import { ProductListPage } from '@/app/modules/product-list';
 
 export const revalidate = 3600;

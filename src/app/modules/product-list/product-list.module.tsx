@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useProducts } from '@/app/entities/api/products';
+import { useProducts } from '@/app/entities/api';
 import { ProductCard } from '@/app/features/product-card';
 import { useRequireAuth } from '@/app/shared/hooks';
 import { Spinner } from '@/app/shared/ui';

@@ -1,6 +1,6 @@
 import { cache } from 'react';
 import { envClient } from '@/config/env';
-import { Product } from '@/app/shared/interfaces';
+import { Product } from '@/app/entities/models';
 
 export const getProducts = async (): Promise<Product[]> => {
   const response = await fetch(`${envClient.NEXT_PUBLIC_API_URL}/products`);
