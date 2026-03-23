@@ -3,8 +3,8 @@ import { Card, CardContent } from '@/pkg/theme/ui/card';
 import { Badge } from '@/pkg/theme/ui/badge';
 import { useFormatter, useTranslations } from 'next-intl';
 import { ProductCardProps } from './product-card.interface';
-import { CardImageContainer } from '../card-image-container';
-import { ProductCardAction } from '../card-action';
+import { CardImageContainer } from './elements';
+import { ProductCardAction } from './elements';
 
 export const ProductCard = ({ product, priority, variant = 'compact' }: ProductCardProps) => {
   const formatCurrency = useFormatter();

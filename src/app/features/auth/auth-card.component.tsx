@@ -1,8 +1,13 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/pkg/theme/ui/card';
 import { LoginForm } from './login-form.component';
 import { SignupForm } from './signup-form.component';
-import { AuthCardProps } from './auth-card.interface';
 import { useTranslations } from 'next-intl';
+
+type AuthCardVariant = 'login' | 'signup';
+
+interface AuthCardProps {
+  variant: AuthCardVariant;
+}
 
 export const AuthCard = ({ variant }: AuthCardProps) => {
   const translations = useTranslations('AuthPage.heading');

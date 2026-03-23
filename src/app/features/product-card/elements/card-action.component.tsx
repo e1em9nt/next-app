@@ -5,7 +5,11 @@ import { ArrowRightIcon } from 'lucide-react';
 import { Link, useRouter } from '@/pkg/locale';
 import { buttonVariants, Button } from '@/pkg/theme/ui/button';
 import { cn } from '@/pkg/theme/lib/utils';
-import { CardActionProps } from './card-action.interface';
+
+interface CardActionProps {
+  isCompact: boolean;
+  href?: string;
+}
 
 export const ProductCardAction = ({ isCompact, href = '' }: CardActionProps) => {
   const router = useRouter();

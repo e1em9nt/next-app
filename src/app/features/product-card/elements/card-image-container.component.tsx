@@ -1,5 +1,10 @@
 import { Link } from '@/pkg/locale';
-import { CardImageContainerProps } from './card-image-container.interface';
+
+interface CardImageContainerProps {
+  children: React.ReactNode;
+  isCompact: boolean;
+  href?: string;
+}
 
 export const CardImageContainer = ({ children, isCompact, href = '' }: CardImageContainerProps) => {
   const className = 'mb-6 overflow-hidden rounded-lg sm:mb-12';
