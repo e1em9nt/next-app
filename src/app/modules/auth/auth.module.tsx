@@ -5,11 +5,12 @@ import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 
-import { AuthCard } from '@/app/features/auth'
 import authBackground from '@/app/shared/assets/icon/main-bg.png'
 import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
+
+import { AuthCard } from './elements'
 
 export function AuthPage() {
   const router = useRouter()
