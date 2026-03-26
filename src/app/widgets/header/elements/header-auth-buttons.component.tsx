@@ -8,10 +8,11 @@ import { Link, usePathname, useRouter } from '@/pkg/locale'
 import { cn } from '@/pkg/theme/lib/utils'
 import { Button, buttonVariants } from '@/pkg/theme/ui/button'
 
-export const HeaderAuthButtons = () => {
+const HeaderAuthButtonsComponent = () => {
   const pathname = usePathname()
-  const { currentUser, logout, _hasHydrated } = useAuthStore()
   const router = useRouter()
+
+  const { currentUser, logout, _hasHydrated } = useAuthStore()
   const translations = useTranslations('Header.auth')
 
   const isRootPage = pathname === '/' || pathname.match(/^\/[a-z]{2}\/?$/)
@@ -29,8 +30,10 @@ export const HeaderAuthButtons = () => {
       <div className='flex items-center gap-5'>
         <div className='flex items-center gap-2 text-sm'>
           <User className='size-4' />
+
           <span>{currentUser.name}</span>
         </div>
+
         <Button variant='outline' onClick={handleLogout} className='px-4'>
           {translations('logout')}
         </Button>
@@ -44,6 +47,7 @@ export const HeaderAuthButtons = () => {
         <Link href='/auth?tab=signup' className={cn(buttonVariants({ variant: 'outline' }), 'w-22 border sm:w-28')}>
           <LogIn /> {translations('signup')}
         </Link>
+
         <Link href='/auth' className={cn(buttonVariants({ variant: 'default' }), 'w-22 sm:w-28')}>
           <User /> {translations('login')}
         </Link>
@@ -53,3 +57,5 @@ export const HeaderAuthButtons = () => {
 
   return null
 }
+
+export default HeaderAuthButtonsComponent

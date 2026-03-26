@@ -1,5 +1,5 @@
-import type { NextConfig } from 'next';
-import createNextIntlPlugin from 'next-intl/plugin';
+import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin'
 
 // i18n
 const withNextIntl = createNextIntlPlugin({
@@ -7,7 +7,7 @@ const withNextIntl = createNextIntlPlugin({
   experimental: {
     createMessagesDeclaration: './translations/en.json',
   },
-});
+})
 
 // config
 const nextConfig: NextConfig = {
@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
       fullUrl: process.env.NODE_ENV !== 'production',
     },
   },
-  
+
   images: {
     remotePatterns: [
       {
@@ -57,8 +57,6 @@ const nextConfig: NextConfig = {
       headers: [{ key: 'Cache-Control', value: 'public, max-age=86400, immutable' }],
     },
   ],
-};
+}
 
-
-
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig)

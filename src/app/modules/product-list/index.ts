@@ -1,1 +1,1 @@
-export { ProductListPage } from './product-list.module'
+export { default as ProductListModule } from './product-list.module'

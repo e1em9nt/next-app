@@ -1,12 +1,16 @@
+import { type ReactNode } from 'react'
+
 import { Link } from '@/pkg/locale'
 
-interface CardImageContainerProps {
-  children: React.ReactNode
+interface ICardImageContainerProps {
+  children: ReactNode
   isCompact: boolean
   href?: string
 }
 
-export const CardImageContainer = ({ children, isCompact, href = '' }: CardImageContainerProps) => {
+const CardImageContainerComponent = (props: ICardImageContainerProps) => {
+  const { children, isCompact, href = '' } = props
+
   const className = 'mb-6 overflow-hidden rounded-lg sm:mb-12'
   if (isCompact) {
     return (
@@ -18,3 +22,5 @@ export const CardImageContainer = ({ children, isCompact, href = '' }: CardImage
     return <div className={className}>{children}</div>
   }
 }
+
+export default CardImageContainerComponent

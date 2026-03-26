@@ -7,11 +7,13 @@ import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Button } from '@/pkg/theme/ui/button'
 
-export const ViewProductsButton = () => {
-  const { currentUser } = useAuthStore()
-  const router = useRouter()
-  const translations = useTranslations('HomePage')
+const ViewProductsButtonComponent = () => {
   const [isPending, startTransition] = useTransition()
+
+  const router = useRouter()
+
+  const { currentUser } = useAuthStore()
+  const translations = useTranslations('HomePage')
 
   const handleClick = () => {
     startTransition(() => {
@@ -29,3 +31,5 @@ export const ViewProductsButton = () => {
     </Button>
   )
 }
+
+export default ViewProductsButtonComponent

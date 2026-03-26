@@ -13,13 +13,15 @@ import { Button } from '@/pkg/theme/ui/button'
 import { Input } from '@/pkg/theme/ui/input'
 import { Label } from '@/pkg/theme/ui/label'
 
-import { createLoginSchema, type LoginSchemaData } from './auth.schemas'
+import { createLoginSchema, type TLoginSchemaData } from './auth.schemas'
 
-export const LoginForm = () => {
+const LoginFormComponent = () => {
   const [isVisible, setIsVisible] = useState(false)
 
-  const { login: loginUser } = useAuthStore()
   const router = useRouter()
+
+  const { login: loginUser } = useAuthStore()
+
   const translations = useTranslations('LogInForm')
   const schema = createLoginSchema(translations)
 
@@ -28,7 +30,7 @@ export const LoginForm = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting, isDirty },
-  } = useForm<LoginSchemaData>({
+  } = useForm<TLoginSchemaData>({
     resolver: zodResolver(schema),
     defaultValues: {
       email: '',
@@ -36,7 +38,7 @@ export const LoginForm = () => {
     },
   })
 
-  const onSubmit = async (data: LoginSchemaData) => {
+  const handleLoginFormSubmit = async (data: TLoginSchemaData) => {
     const result = await loginUser(data.email, data.password)
     if (result.success) {
       router.push('/products')
@@ -46,11 +48,12 @@ export const LoginForm = () => {
   }
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className='space-y-4' onSubmit={handleSubmit(handleLoginFormSubmit)} noValidate>
       <div className='space-y-1'>
         <Label htmlFor='email' className='leading-5'>
           {translations('email')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input type='email' id='email' placeholder='name@example.com' {...register('email')} />
         {errors.email && <p className='text-destructive'>{errors.email.message}</p>}
       </div>
@@ -59,6 +62,7 @@ export const LoginForm = () => {
         <Label htmlFor='password' className='leading-5'>
           {translations('password')} <span className='text-destructive'>*</span>
         </Label>
+
         <div className='relative'>
           <Input
             id='password'
@@ -67,6 +71,7 @@ export const LoginForm = () => {
             placeholder={translations('placeholder.password')}
             {...register('password')}
           />
+
           <Button
             variant='ghost'
             size='icon'
@@ -79,6 +84,7 @@ export const LoginForm = () => {
             </span>
           </Button>
         </div>
+
         {errors.password && <p className='text-destructive'>{errors.password.message}</p>}
       </div>
 
@@ -96,3 +102,5 @@ export const LoginForm = () => {
     </form>
   )
 }
+
+export default LoginFormComponent

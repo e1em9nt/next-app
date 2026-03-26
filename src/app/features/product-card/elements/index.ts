@@ -1,2 +1,2 @@
-export { ProductCardAction } from './card-action.component'
-export { CardImageContainer } from './card-image-container.component'
+export { default as ProductCardActionComponent } from './card-action.component'
+export { default as CardImageContainerComponent } from './card-image-container.component'
