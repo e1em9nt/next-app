@@ -13,13 +13,15 @@ import { Button } from '@/pkg/theme/ui/button'
 import { Input } from '@/pkg/theme/ui/input'
 import { Label } from '@/pkg/theme/ui/label'
 
-import { createSignupSchema, type SignupSchemaData } from './auth.schemas'
+import { createSignupSchema, type TSignupSchemaData } from './auth.schemas'
 
-export const SignupForm = () => {
+const SignupFormComponent = () => {
   const [isVisible, setIsVisible] = useState(false)
 
-  const { register: registerUser } = useAuthStore()
   const router = useRouter()
+
+  const { register: registerUser } = useAuthStore()
+
   const translations = useTranslations('SignupForm')
   const schema = createSignupSchema(translations)
 
@@ -28,7 +30,7 @@ export const SignupForm = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting, isDirty },
-  } = useForm<SignupSchemaData>({
+  } = useForm<TSignupSchemaData>({
     resolver: zodResolver(schema),
     defaultValues: {
       name: '',
@@ -38,7 +40,7 @@ export const SignupForm = () => {
     },
   })
 
-  const onSubmit = async (data: SignupSchemaData) => {
+  const handleSignupFormSubmit = async (data: TSignupSchemaData) => {
     const result = await registerUser(data.name, data.email, data.password)
     if (result.success) {
       router.push('/products')
@@ -48,11 +50,12 @@ export const SignupForm = () => {
   }
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className='space-y-4' onSubmit={handleSubmit(handleSignupFormSubmit)} noValidate>
       <div className='space-y-1'>
         <Label htmlFor='username' className='leading-5'>
           {translations('name')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input
           id='username'
           type='text'
@@ -62,10 +65,12 @@ export const SignupForm = () => {
         />
         {errors.name && <p className='text-destructive'>{errors.name.message}</p>}
       </div>
+
       <div className='space-y-1'>
         <Label htmlFor='email' className='leading-5'>
           {translations('email')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input
           type='email'
           id='email'
@@ -80,6 +85,7 @@ export const SignupForm = () => {
         <Label htmlFor='password' className='leading-5'>
           {translations('password')} <span className='text-destructive'>*</span>
         </Label>
+
         <div className='relative'>
           <Input
             id='password'
@@ -89,6 +95,7 @@ export const SignupForm = () => {
             {...register('password')}
             aria-invalid={errors.password ? true : undefined}
           />
+
           <Button
             variant='ghost'
             size='icon'
@@ -100,6 +107,7 @@ export const SignupForm = () => {
               {isVisible ? translations('actions.hidePassword') : translations('actions.showPassword')}
             </span>
           </Button>
+
           {errors.password && <p className='text-destructive'>{errors.password.message}</p>}
         </div>
       </div>
@@ -108,6 +116,7 @@ export const SignupForm = () => {
         <Label htmlFor='confirmPassword' className='leading-5'>
           {translations('confirmPassword')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input
           id='confirmPassword'
           type='password'
@@ -116,6 +125,7 @@ export const SignupForm = () => {
           {...register('confirmPassword')}
           aria-invalid={errors.confirmPassword ? true : undefined}
         />
+
         {errors.confirmPassword && <p className='text-destructive'>{errors.confirmPassword.message}</p>}
       </div>
 
@@ -133,3 +143,5 @@ export const SignupForm = () => {
     </form>
   )
 }
+
+export default SignupFormComponent

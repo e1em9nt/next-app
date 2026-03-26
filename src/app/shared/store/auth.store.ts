@@ -2,13 +2,13 @@ import bcrypt from 'bcryptjs'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-import { AuthState, RegisteredUser } from '../interfaces'
+import { IAuthState, IRegisteredUser } from '@/app/shared/interfaces'
 
 function generateToken(email: string): string {
   return btoa(`${email}:${Date.now()}:${Math.random()}`)
 }
 
-export const useAuthStore = create<AuthState>()(
+export const useAuthStore = create<IAuthState>()(
   persist(
     (set, get) => ({
       users: [],
@@ -27,7 +27,7 @@ export const useAuthStore = create<AuthState>()(
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
-        const newUser: RegisteredUser = { name, email, hashedPassword }
+        const newUser: IRegisteredUser = { name, email, hashedPassword }
 
         set((state) => ({
           users: [...state.users, newUser],

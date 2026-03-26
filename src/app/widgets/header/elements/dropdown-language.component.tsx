@@ -12,15 +12,18 @@ import {
   DropdownMenuTrigger,
 } from '@/pkg/theme/ui/dropdown-menu'
 
-type Props = {
+interface ILanguageDropdownProps {
   trigger: ReactNode
   defaultOpen?: boolean
   align?: 'start' | 'center' | 'end'
 }
 
-const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
-  const pathname = usePathname()
+const LanguageDropdownComponent = (props: ILanguageDropdownProps) => {
+  const { defaultOpen, align, trigger } = props
+
   const params = useParams()
+
+  const pathname = usePathname()
   const router = useRouter()
 
   const [language, setLanguage] = useState(params.locale as string)
@@ -34,6 +37,7 @@ const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
+
       <DropdownMenuContent className='w-25' align={align || 'end'}>
         <DropdownMenuRadioGroup value={language} onValueChange={handleLanguageChange}>
           <DropdownMenuRadioItem
@@ -42,6 +46,7 @@ const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
           >
             English
           </DropdownMenuRadioItem>
+
           <DropdownMenuRadioItem
             value='de'
             className='data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground pl-2 text-base [&>span]:hidden'
@@ -54,4 +59,4 @@ const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
   )
 }
 
-export { LanguageDropdown }
+export default LanguageDropdownComponent

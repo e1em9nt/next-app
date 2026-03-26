@@ -19,5 +19,5 @@ export const createSignupSchema = (t: (key: string) => string) =>
       path: ['confirmPassword'],
     })
 
-export type LoginSchemaData = z.infer<ReturnType<typeof createLoginSchema>>
-export type SignupSchemaData = z.infer<ReturnType<typeof createSignupSchema>>
+export type TLoginSchemaData = z.infer<ReturnType<typeof createLoginSchema>>
+export type TSignupSchemaData = z.infer<ReturnType<typeof createSignupSchema>>

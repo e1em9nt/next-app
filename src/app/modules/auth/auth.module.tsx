@@ -5,18 +5,21 @@ import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 
-import { AuthCard } from '@/app/features/auth'
 import authBackground from '@/app/shared/assets/icon/main-bg.png'
 import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
 
-export function AuthPage() {
+import { AuthCardComponent } from './elements'
+
+function AuthModule() {
   const router = useRouter()
+
   const searchParams = useSearchParams()
   const tab = searchParams.get('tab') ?? 'login'
-  const translations = useTranslations('AuthPage.heading')
+
   const { currentUser, _hasHydrated } = useAuthStore()
+  const translations = useTranslations('AuthPage.heading')
 
   useEffect(() => {
     if (_hasHydrated && currentUser) {
@@ -40,22 +43,28 @@ export function AuthPage() {
         placeholder='blur'
         className='-z-10 object-cover'
       />
+
       <Tabs defaultValue={tab} onValueChange={handleTabChange} className='mx-auto flex w-full max-w-md flex-col gap-8'>
         <TabsList className='space-x-4 self-center'>
           <TabsTrigger value='login' className='w-22 cursor-pointer sm:w-30'>
             {translations('login')}
           </TabsTrigger>
+
           <TabsTrigger value='signup' className='w-22 cursor-pointer sm:w-30'>
             {translations('signup')}
           </TabsTrigger>
         </TabsList>
+
         <TabsContent value='login'>
-          <AuthCard variant='login' />
+          <AuthCardComponent variant='login' />
         </TabsContent>
+
         <TabsContent value='signup'>
-          <AuthCard variant='signup' />
+          <AuthCardComponent variant='signup' />
         </TabsContent>
       </Tabs>
     </main>
   )
 }
+
+export default AuthModule

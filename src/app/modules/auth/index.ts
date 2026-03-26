@@ -1,1 +1,1 @@
-export { AuthPage } from './auth.module'
+export { default as AuthModule } from './auth.module'

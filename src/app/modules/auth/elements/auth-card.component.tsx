@@ -2,16 +2,18 @@ import { useTranslations } from 'next-intl'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/theme/ui/card'
 
-import { LoginForm } from './login-form.component'
-import { SignupForm } from './signup-form.component'
+import LoginFormComponent from './login-form.component'
+import SignupFormComponent from './signup-form.component'
 
-type AuthCardVariant = 'login' | 'signup'
+type TAuthCardVariant = 'login' | 'signup'
 
-interface AuthCardProps {
-  variant: AuthCardVariant
+interface IAuthCardProps {
+  variant: TAuthCardVariant
 }
 
-export const AuthCard = ({ variant }: AuthCardProps) => {
+const AuthCardComponent = (props: IAuthCardProps) => {
+  const { variant } = props
+
   const translations = useTranslations('AuthPage.heading')
 
   return (
@@ -21,7 +23,10 @@ export const AuthCard = ({ variant }: AuthCardProps) => {
           {variant === 'login' ? translations('login') : translations('signup')}
         </CardTitle>
       </CardHeader>
-      <CardContent>{variant === 'login' ? <LoginForm /> : <SignupForm />}</CardContent>
+
+      <CardContent>{variant === 'login' ? <LoginFormComponent /> : <SignupFormComponent />}</CardContent>
     </Card>
   )
 }
+
+export default AuthCardComponent

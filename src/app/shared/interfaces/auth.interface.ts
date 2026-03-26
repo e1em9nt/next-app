@@ -1,15 +1,15 @@
-export interface User {
+export interface IUser {
   name: string
   email: string
 }
 
-export interface RegisteredUser extends User {
+export interface IRegisteredUser extends IUser {
   hashedPassword: string
 }
 
-export interface AuthState {
-  users: RegisteredUser[]
-  currentUser: User | null
+export interface IAuthState {
+  users: IRegisteredUser[]
+  currentUser: IUser | null
   token: string | null
   _hasHydrated: boolean
   setHasHydrated: (hasHydrated: boolean) => void
