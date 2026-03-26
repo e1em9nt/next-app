@@ -6,12 +6,12 @@ import { Link, useRouter } from '@/pkg/locale'
 import { cn } from '@/pkg/theme/lib/utils'
 import { Button, buttonVariants } from '@/pkg/theme/ui/button'
 
-interface CardActionProps {
+interface ICardActionProps {
   isCompact: boolean
   href?: string
 }
 
-export const ProductCardAction = ({ isCompact, href = '' }: CardActionProps) => {
+export const ProductCardAction = ({ isCompact, href = '' }: ICardActionProps) => {
   const router = useRouter()
 
   const buttonClassName =

@@ -1,2 +1,2 @@
 export { ProductCard } from './product-card.component'
-export type { ProductCardProps } from './product-card.interface'
+export type { IProductCardProps } from './product-card.interface'

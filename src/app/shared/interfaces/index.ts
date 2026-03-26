@@ -1,1 +1,1 @@
-export type { AuthState, RegisteredUser, User } from './auth.interface'
+export type { IAuthState, IRegisteredUser, IUser } from './auth.interface'

@@ -1,7 +1,7 @@
-import { Product } from '@/app/entities/models'
+import { IProduct } from '@/app/entities/models'
 
-export interface ProductCardProps {
-  product: Product
+export interface IProductCardProps {
+  product: IProduct
   priority?: boolean
   variant?: 'detailed' | 'compact'
 }

@@ -6,9 +6,9 @@ import { Card, CardContent } from '@/pkg/theme/ui/card'
 
 import { CardImageContainer } from './elements'
 import { ProductCardAction } from './elements'
-import { ProductCardProps } from './product-card.interface'
+import { IProductCardProps } from './product-card.interface'
 
-export const ProductCard = ({ product, priority, variant = 'compact' }: ProductCardProps) => {
+export const ProductCard = ({ product, priority, variant = 'compact' }: IProductCardProps) => {
   const formatCurrency = useFormatter()
   const t = useTranslations('Products.rating')
 

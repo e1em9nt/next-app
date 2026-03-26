@@ -12,13 +12,13 @@ import {
   DropdownMenuTrigger,
 } from '@/pkg/theme/ui/dropdown-menu'
 
-type Props = {
+interface ILanguageDropdownProps {
   trigger: ReactNode
   defaultOpen?: boolean
   align?: 'start' | 'center' | 'end'
 }
 
-const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
+const LanguageDropdown = ({ defaultOpen, align, trigger }: ILanguageDropdownProps) => {
   const pathname = usePathname()
   const params = useParams()
   const router = useRouter()

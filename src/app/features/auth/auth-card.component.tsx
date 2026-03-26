@@ -5,13 +5,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/pkg/theme/ui/card'
 import { LoginForm } from './login-form.component'
 import { SignupForm } from './signup-form.component'
 
-type AuthCardVariant = 'login' | 'signup'
+type TAuthCardVariant = 'login' | 'signup'
 
-interface AuthCardProps {
-  variant: AuthCardVariant
+interface IAuthCardProps {
+  variant: TAuthCardVariant
 }
 
-export const AuthCard = ({ variant }: AuthCardProps) => {
+export const AuthCard = ({ variant }: IAuthCardProps) => {
   const translations = useTranslations('AuthPage.heading')
 
   return (

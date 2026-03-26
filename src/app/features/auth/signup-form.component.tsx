@@ -13,7 +13,7 @@ import { Button } from '@/pkg/theme/ui/button'
 import { Input } from '@/pkg/theme/ui/input'
 import { Label } from '@/pkg/theme/ui/label'
 
-import { createSignupSchema, type SignupSchemaData } from './auth.schemas'
+import { createSignupSchema, type TSignupSchemaData } from './auth.schemas'
 
 export const SignupForm = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -28,7 +28,7 @@ export const SignupForm = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting, isDirty },
-  } = useForm<SignupSchemaData>({
+  } = useForm<TSignupSchemaData>({
     resolver: zodResolver(schema),
     defaultValues: {
       name: '',
@@ -38,7 +38,7 @@ export const SignupForm = () => {
     },
   })
 
-  const onSubmit = async (data: SignupSchemaData) => {
+  const onSubmit = async (data: TSignupSchemaData) => {
     const result = await registerUser(data.name, data.email, data.password)
     if (result.success) {
       router.push('/products')
