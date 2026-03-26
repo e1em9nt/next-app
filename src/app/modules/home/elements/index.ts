@@ -1,1 +1,1 @@
-export { ViewProductsButton } from './view-product-button.component'
+export { default as ViewProductsButtonComponent } from './view-product-button.component'

@@ -3,16 +3,16 @@
 import { useTranslations } from 'next-intl'
 
 import { useProducts } from '@/app/entities/api'
-import { ProductCard } from '@/app/features/product-card'
+import { ProductCardComponent } from '@/app/features/product-card'
 import { useRequireAuth } from '@/app/shared/hooks'
-import { Spinner } from '@/app/shared/ui'
+import { SpinnerComponent } from '@/app/shared/ui'
 
-export const ProductListPage = () => {
+const ProductListModule = () => {
   const { isAuthenticated, isLoading } = useRequireAuth()
   const { data: products = [] } = useProducts()
   const t = useTranslations('Products')
 
-  if (isLoading) return <Spinner />
+  if (isLoading) return <SpinnerComponent />
   if (!isAuthenticated) return null
 
   return (
@@ -20,9 +20,11 @@ export const ProductListPage = () => {
       <h2 className='text-3xl font-semibold'>{t('heading')}</h2>
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {products.map((product, index: number) => (
-          <ProductCard key={product.id} product={product} priority={index < 4} />
+          <ProductCardComponent key={product.id} product={product} priority={index < 4} />
         ))}
       </div>
     </main>
   )
 }
+
+export default ProductListModule

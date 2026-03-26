@@ -15,7 +15,7 @@ import { Label } from '@/pkg/theme/ui/label'
 
 import { createSignupSchema, type TSignupSchemaData } from './auth.schemas'
 
-export const SignupForm = () => {
+const SignupFormComponent = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const { register: registerUser } = useAuthStore()
@@ -133,3 +133,5 @@ export const SignupForm = () => {
     </form>
   )
 }
+
+export default SignupFormComponent

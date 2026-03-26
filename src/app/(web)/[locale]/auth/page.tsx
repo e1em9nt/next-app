@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { Suspense } from 'react'
 
-import { AuthPage } from '@/app/modules/auth'
+import { AuthModule } from '@/app/modules/auth'
 
 export async function generateMetadata({
   params,
@@ -24,7 +24,7 @@ export async function generateMetadata({
 export default function Auth() {
   return (
     <Suspense>
-      <AuthPage />
+      <AuthModule />
     </Suspense>
   )
 }

@@ -1,7 +1,7 @@
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
 import { getProducts } from '@/app/entities/api'
-import { ProductListPage } from '@/app/modules/product-list'
+import { ProductListModule } from '@/app/modules/product-list'
 import { getQueryClient } from '@/pkg/rest-api'
 
 export const revalidate = 3600
@@ -16,7 +16,7 @@ export default async function Products() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ProductListPage />
+      <ProductListModule />
     </HydrationBoundary>
   )
 }

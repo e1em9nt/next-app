@@ -10,9 +10,9 @@ import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
 
-import { AuthCard } from './elements'
+import { AuthCardComponent } from './elements'
 
-export function AuthPage() {
+function AuthModule() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const tab = searchParams.get('tab') ?? 'login'
@@ -51,12 +51,14 @@ export function AuthPage() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value='login'>
-          <AuthCard variant='login' />
+          <AuthCardComponent variant='login' />
         </TabsContent>
         <TabsContent value='signup'>
-          <AuthCard variant='signup' />
+          <AuthCardComponent variant='signup' />
         </TabsContent>
       </Tabs>
     </main>
   )
 }
+
+export default AuthModule

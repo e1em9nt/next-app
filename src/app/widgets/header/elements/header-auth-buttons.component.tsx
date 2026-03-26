@@ -8,7 +8,7 @@ import { Link, usePathname, useRouter } from '@/pkg/locale'
 import { cn } from '@/pkg/theme/lib/utils'
 import { Button, buttonVariants } from '@/pkg/theme/ui/button'
 
-export const HeaderAuthButtons = () => {
+const HeaderAuthButtonsComponent = () => {
   const pathname = usePathname()
   const { currentUser, logout, _hasHydrated } = useAuthStore()
   const router = useRouter()
@@ -53,3 +53,5 @@ export const HeaderAuthButtons = () => {
 
   return null
 }
+
+export default HeaderAuthButtonsComponent

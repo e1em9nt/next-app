@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
-import { Header } from '@/app/widgets/header'
+import { HeaderComponent } from '@/app/widgets/header'
 import { routing } from '@/pkg/locale'
 import { RestApiProvider } from '@/pkg/rest-api'
 
@@ -40,7 +40,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider>
           <RestApiProvider>
-            <Header />
+            <HeaderComponent />
             {children}
           </RestApiProvider>
         </NextIntlClientProvider>

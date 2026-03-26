@@ -4,11 +4,10 @@ import { useFormatter, useTranslations } from 'next-intl'
 import { Badge } from '@/pkg/theme/ui/badge'
 import { Card, CardContent } from '@/pkg/theme/ui/card'
 
-import { CardImageContainer } from './elements'
-import { ProductCardAction } from './elements'
+import { CardImageContainerComponent, ProductCardActionComponent } from './elements'
 import { IProductCardProps } from './product-card.interface'
 
-export const ProductCard = ({ product, priority, variant = 'compact' }: IProductCardProps) => {
+const ProductCardComponent = ({ product, priority, variant = 'compact' }: IProductCardProps) => {
   const formatCurrency = useFormatter()
   const t = useTranslations('Products.rating')
 
@@ -17,7 +16,7 @@ export const ProductCard = ({ product, priority, variant = 'compact' }: IProduct
   return (
     <Card className='group h-full overflow-hidden px-2 shadow-none'>
       <CardContent className='space-y-3.5'>
-        <CardImageContainer isCompact={isCompact} href={`/products/${product.id}`}>
+        <CardImageContainerComponent isCompact={isCompact} href={`/products/${product.id}`}>
           <Image
             width={500}
             height={500}
@@ -27,7 +26,7 @@ export const ProductCard = ({ product, priority, variant = 'compact' }: IProduct
             priority={!isCompact || priority}
             className={`${isCompact && 'transition-transform duration-300 group-hover:scale-105'} h-59.5 w-full object-contain`}
           />
-        </CardImageContainer>
+        </CardImageContainerComponent>
         <div className='flex items-center justify-between gap-1.5'>
           <div className='text-foreground text-lg font-semibold'>
             {formatCurrency.number(product.price, {
@@ -52,9 +51,11 @@ export const ProductCard = ({ product, priority, variant = 'compact' }: IProduct
               {t('count')}: {product.rating.count}
             </span>
           </div>
-          <ProductCardAction isCompact={isCompact} href={`/products/${product.id}`} />
+          <ProductCardActionComponent isCompact={isCompact} href={`/products/${product.id}`} />
         </div>
       </CardContent>
     </Card>
   )
 }
+
+export default ProductCardComponent

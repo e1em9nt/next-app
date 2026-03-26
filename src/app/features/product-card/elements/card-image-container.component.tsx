@@ -6,7 +6,7 @@ interface ICardImageContainerProps {
   href?: string
 }
 
-export const CardImageContainer = ({ children, isCompact, href = '' }: ICardImageContainerProps) => {
+const CardImageContainerComponent = ({ children, isCompact, href = '' }: ICardImageContainerProps) => {
   const className = 'mb-6 overflow-hidden rounded-lg sm:mb-12'
   if (isCompact) {
     return (
@@ -18,3 +18,5 @@ export const CardImageContainer = ({ children, isCompact, href = '' }: ICardImag
     return <div className={className}>{children}</div>
   }
 }
+
+export default CardImageContainerComponent

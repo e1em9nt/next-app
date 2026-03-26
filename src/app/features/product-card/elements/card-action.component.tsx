@@ -11,7 +11,7 @@ interface ICardActionProps {
   href?: string
 }
 
-export const ProductCardAction = ({ isCompact, href = '' }: ICardActionProps) => {
+const ProductCardActionComponent = ({ isCompact, href = '' }: ICardActionProps) => {
   const router = useRouter()
 
   const buttonClassName =
@@ -32,3 +32,5 @@ export const ProductCardAction = ({ isCompact, href = '' }: ICardActionProps) =>
     </Button>
   )
 }
+
+export default ProductCardActionComponent

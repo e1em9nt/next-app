@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { buttonVariants } from '@/pkg/theme/ui/button'
 
-export default function NotFoundPage() {
+function NotFoundModule() {
   return (
     <div className='flex min-h-[calc(100vh-64px)] flex-col items-center justify-center px-4 py-8 text-center'>
       <h2 className='mb-6 text-5xl font-semibold'>Whoops!</h2>
@@ -17,3 +17,5 @@ export default function NotFoundPage() {
     </div>
   )
 }
+
+export default NotFoundModule

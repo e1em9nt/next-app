@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { NotFoundPage } from './modules/not-found'
+import { NotFoundModule } from '@/app/modules/not-found'
 
 export const metadata: Metadata = {
   title: 'Not Found | Products',
@@ -12,7 +12,7 @@ export default function NotFound() {
     <html lang='en'>
       <body>
         <main>
-          <NotFoundPage />
+          <NotFoundModule />
         </main>
       </body>
     </html>

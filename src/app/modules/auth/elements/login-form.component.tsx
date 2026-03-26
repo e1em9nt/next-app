@@ -15,7 +15,7 @@ import { Label } from '@/pkg/theme/ui/label'
 
 import { createLoginSchema, type TLoginSchemaData } from './auth.schemas'
 
-export const LoginForm = () => {
+const LoginFormComponent = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const { login: loginUser } = useAuthStore()
@@ -96,3 +96,5 @@ export const LoginForm = () => {
     </form>
   )
 }
+
+export default LoginFormComponent

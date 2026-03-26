@@ -7,7 +7,7 @@ import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Button } from '@/pkg/theme/ui/button'
 
-export const ViewProductsButton = () => {
+const ViewProductsButtonComponent = () => {
   const { currentUser } = useAuthStore()
   const router = useRouter()
   const translations = useTranslations('HomePage')
@@ -29,3 +29,5 @@ export const ViewProductsButton = () => {
     </Button>
   )
 }
+
+export default ViewProductsButtonComponent
