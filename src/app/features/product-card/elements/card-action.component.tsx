@@ -11,7 +11,9 @@ interface ICardActionProps {
   href?: string
 }
 
-const ProductCardActionComponent = ({ isCompact, href = '' }: ICardActionProps) => {
+const ProductCardActionComponent = (props: ICardActionProps) => {
+  const { isCompact, href = '' } = props
+
   const router = useRouter()
 
   const buttonClassName =

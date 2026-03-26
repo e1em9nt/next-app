@@ -6,7 +6,7 @@ import { getQueryClient } from '@/pkg/rest-api'
 
 export const revalidate = 3600
 
-export default async function Products() {
+async function Products() {
   const queryClient = getQueryClient()
 
   await queryClient.prefetchQuery({
@@ -20,3 +20,5 @@ export default async function Products() {
     </HydrationBoundary>
   )
 }
+
+export default Products

@@ -2,6 +2,8 @@
 
 import { ErrorFallbackModule } from '@/app/modules/error-fallback'
 
-export default function Error() {
+function Error() {
   return <ErrorFallbackModule />
 }
+
+export default Error

@@ -20,7 +20,7 @@ const ProductListModule = () => {
       <h2 className='text-3xl font-semibold'>{t('heading')}</h2>
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {products.map((product, index: number) => (
-          <ProductCardComponent key={product.id} product={product} priority={index < 4} />
+          <ProductCardComponent key={product.id} product={product} imgPriority={index < 4} />
         ))}
       </div>
     </main>

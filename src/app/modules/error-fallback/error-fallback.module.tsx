@@ -8,7 +8,9 @@ interface IErrorFallbackProps {
   reset?: () => void
 }
 
-function ErrorFallbackModule({ reset }: IErrorFallbackProps) {
+function ErrorFallbackModule(props: IErrorFallbackProps) {
+  const { reset } = props
+
   return (
     <div className='flex min-h-[calc(100vh-64px)] flex-col items-center justify-center px-4 py-8 text-center'>
       <h2 className='mb-6 text-5xl font-semibold'>Something went wrong!</h2>

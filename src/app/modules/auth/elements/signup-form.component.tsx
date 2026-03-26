@@ -38,7 +38,7 @@ const SignupFormComponent = () => {
     },
   })
 
-  const onSubmit = async (data: TSignupSchemaData) => {
+  const handleSignupFormSubmit = async (data: TSignupSchemaData) => {
     const result = await registerUser(data.name, data.email, data.password)
     if (result.success) {
       router.push('/products')
@@ -48,7 +48,7 @@ const SignupFormComponent = () => {
   }
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className='space-y-4' onSubmit={handleSubmit(handleSignupFormSubmit)} noValidate>
       <div className='space-y-1'>
         <Label htmlFor='username' className='leading-5'>
           {translations('name')} <span className='text-destructive'>*</span>

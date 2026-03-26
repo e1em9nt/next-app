@@ -11,7 +11,9 @@ interface IAuthCardProps {
   variant: TAuthCardVariant
 }
 
-const AuthCardComponent = ({ variant }: IAuthCardProps) => {
+const AuthCardComponent = (props: IAuthCardProps) => {
+  const { variant } = props
+
   const translations = useTranslations('AuthPage.heading')
 
   return (

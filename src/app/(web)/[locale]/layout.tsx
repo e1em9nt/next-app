@@ -1,12 +1,18 @@
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { type ReactNode } from 'react'
 
+import { type ILocaleParamsProps } from '@/app/shared/interfaces'
 import { HeaderComponent } from '@/app/widgets/header'
 import { routing } from '@/pkg/locale'
 import { RestApiProvider } from '@/pkg/rest-api'
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+interface ILocaleLayoutProps extends ILocaleParamsProps {
+  children: ReactNode
+}
+
+export async function generateMetadata({ params }: ILocaleParamsProps) {
   const { locale } = await params
   const translations = await getTranslations({ locale, namespace: 'HomePage' })
 
@@ -20,13 +26,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
-}>) {
+async function LocaleLayout(props: Readonly<ILocaleLayoutProps>) {
+  const { children, params } = props
+
   const { locale } = await params
 
   if (!hasLocale(routing.locales, locale)) {
@@ -48,3 +50,5 @@ export default async function LocaleLayout({
     </html>
   )
 }
+
+export default LocaleLayout

@@ -36,7 +36,7 @@ const LoginFormComponent = () => {
     },
   })
 
-  const onSubmit = async (data: TLoginSchemaData) => {
+  const handleLoginFormSubmit = async (data: TLoginSchemaData) => {
     const result = await loginUser(data.email, data.password)
     if (result.success) {
       router.push('/products')
@@ -46,7 +46,7 @@ const LoginFormComponent = () => {
   }
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className='space-y-4' onSubmit={handleSubmit(handleLoginFormSubmit)} noValidate>
       <div className='space-y-1'>
         <Label htmlFor='email' className='leading-5'>
           {translations('email')} <span className='text-destructive'>*</span>

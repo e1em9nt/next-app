@@ -7,7 +7,9 @@ import { Card, CardContent } from '@/pkg/theme/ui/card'
 import { CardImageContainerComponent, ProductCardActionComponent } from './elements'
 import { IProductCardProps } from './product-card.interface'
 
-const ProductCardComponent = ({ product, priority, variant = 'compact' }: IProductCardProps) => {
+const ProductCardComponent = (props: IProductCardProps) => {
+  const { product, imgPriority, variant = 'compact' } = props
+
   const formatCurrency = useFormatter()
   const t = useTranslations('Products.rating')
 
@@ -23,7 +25,7 @@ const ProductCardComponent = ({ product, priority, variant = 'compact' }: IProdu
             src={product.image}
             alt={product.title}
             quality={60}
-            priority={!isCompact || priority}
+            priority={!isCompact || imgPriority}
             className={`${isCompact && 'transition-transform duration-300 group-hover:scale-105'} h-59.5 w-full object-contain`}
           />
         </CardImageContainerComponent>

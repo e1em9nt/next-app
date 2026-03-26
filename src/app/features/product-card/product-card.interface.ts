@@ -2,6 +2,6 @@ import { IProduct } from '@/app/entities/models'
 
 export interface IProductCardProps {
   product: IProduct
-  priority?: boolean
+  imgPriority?: boolean
   variant?: 'detailed' | 'compact'
 }

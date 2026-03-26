@@ -18,7 +18,9 @@ interface ILanguageDropdownProps {
   align?: 'start' | 'center' | 'end'
 }
 
-const LanguageDropdownComponent = ({ defaultOpen, align, trigger }: ILanguageDropdownProps) => {
+const LanguageDropdownComponent = (props: ILanguageDropdownProps) => {
+  const { defaultOpen, align, trigger } = props
+
   const pathname = usePathname()
   const params = useParams()
   const router = useRouter()
