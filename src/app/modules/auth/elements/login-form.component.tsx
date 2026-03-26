@@ -18,8 +18,10 @@ import { createLoginSchema, type TLoginSchemaData } from './auth.schemas'
 const LoginFormComponent = () => {
   const [isVisible, setIsVisible] = useState(false)
 
-  const { login: loginUser } = useAuthStore()
   const router = useRouter()
+
+  const { login: loginUser } = useAuthStore()
+
   const translations = useTranslations('LogInForm')
   const schema = createLoginSchema(translations)
 
@@ -51,6 +53,7 @@ const LoginFormComponent = () => {
         <Label htmlFor='email' className='leading-5'>
           {translations('email')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input type='email' id='email' placeholder='name@example.com' {...register('email')} />
         {errors.email && <p className='text-destructive'>{errors.email.message}</p>}
       </div>
@@ -59,6 +62,7 @@ const LoginFormComponent = () => {
         <Label htmlFor='password' className='leading-5'>
           {translations('password')} <span className='text-destructive'>*</span>
         </Label>
+
         <div className='relative'>
           <Input
             id='password'
@@ -67,6 +71,7 @@ const LoginFormComponent = () => {
             placeholder={translations('placeholder.password')}
             {...register('password')}
           />
+
           <Button
             variant='ghost'
             size='icon'
@@ -79,6 +84,7 @@ const LoginFormComponent = () => {
             </span>
           </Button>
         </div>
+
         {errors.password && <p className='text-destructive'>{errors.password.message}</p>}
       </div>
 

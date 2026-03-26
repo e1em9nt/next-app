@@ -14,6 +14,7 @@ interface ILocaleLayoutProps extends ILocaleParamsProps {
 
 export async function generateMetadata({ params }: ILocaleParamsProps) {
   const { locale } = await params
+
   const translations = await getTranslations({ locale, namespace: 'HomePage' })
 
   return {
@@ -28,7 +29,6 @@ export function generateStaticParams() {
 
 async function LocaleLayout(props: Readonly<ILocaleLayoutProps>) {
   const { children, params } = props
-
   const { locale } = await params
 
   if (!hasLocale(routing.locales, locale)) {

@@ -23,6 +23,7 @@ const AuthCardComponent = (props: IAuthCardProps) => {
           {variant === 'login' ? translations('login') : translations('signup')}
         </CardTitle>
       </CardHeader>
+
       <CardContent>{variant === 'login' ? <LoginFormComponent /> : <SignupFormComponent />}</CardContent>
     </Card>
   )

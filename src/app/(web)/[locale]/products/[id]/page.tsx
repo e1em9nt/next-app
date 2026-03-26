@@ -9,6 +9,7 @@ interface IProductDetailsProps {
 
 export async function generateMetadata({ params }: IProductDetailsProps) {
   const { id } = await params
+
   const product = await getProductById(id)
 
   if (!product) notFound()
@@ -21,7 +22,6 @@ export async function generateMetadata({ params }: IProductDetailsProps) {
 
 async function ProductDetails(props: IProductDetailsProps) {
   const { params } = props
-
   const { id } = await params
 
   const product = await getProductById(id)

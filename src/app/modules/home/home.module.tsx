@@ -18,11 +18,14 @@ async function HomeModule() {
         placeholder='blur'
         className='-z-10 object-cover'
       />
+
       <div className='flex h-full flex-col items-center justify-center gap-10 font-sans'>
         <div className='flex flex-col items-center justify-center gap-5'>
           <h1 className='text-2xl font-bold text-gray-700 sm:text-3xl md:text-4xl'>{translations('heading')}</h1>
+
           <p className='text-center text-sm text-gray-700 sm:w-1/2 sm:text-base'>{translations('description')}</p>
         </div>
+
         <ViewProductsButtonComponent />
       </div>
     </main>

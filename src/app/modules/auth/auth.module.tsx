@@ -14,10 +14,12 @@ import { AuthCardComponent } from './elements'
 
 function AuthModule() {
   const router = useRouter()
+
   const searchParams = useSearchParams()
   const tab = searchParams.get('tab') ?? 'login'
-  const translations = useTranslations('AuthPage.heading')
+
   const { currentUser, _hasHydrated } = useAuthStore()
+  const translations = useTranslations('AuthPage.heading')
 
   useEffect(() => {
     if (_hasHydrated && currentUser) {
@@ -41,18 +43,22 @@ function AuthModule() {
         placeholder='blur'
         className='-z-10 object-cover'
       />
+
       <Tabs defaultValue={tab} onValueChange={handleTabChange} className='mx-auto flex w-full max-w-md flex-col gap-8'>
         <TabsList className='space-x-4 self-center'>
           <TabsTrigger value='login' className='w-22 cursor-pointer sm:w-30'>
             {translations('login')}
           </TabsTrigger>
+
           <TabsTrigger value='signup' className='w-22 cursor-pointer sm:w-30'>
             {translations('signup')}
           </TabsTrigger>
         </TabsList>
+
         <TabsContent value='login'>
           <AuthCardComponent variant='login' />
         </TabsContent>
+
         <TabsContent value='signup'>
           <AuthCardComponent variant='signup' />
         </TabsContent>

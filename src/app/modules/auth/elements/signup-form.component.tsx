@@ -18,8 +18,10 @@ import { createSignupSchema, type TSignupSchemaData } from './auth.schemas'
 const SignupFormComponent = () => {
   const [isVisible, setIsVisible] = useState(false)
 
-  const { register: registerUser } = useAuthStore()
   const router = useRouter()
+
+  const { register: registerUser } = useAuthStore()
+
   const translations = useTranslations('SignupForm')
   const schema = createSignupSchema(translations)
 
@@ -53,6 +55,7 @@ const SignupFormComponent = () => {
         <Label htmlFor='username' className='leading-5'>
           {translations('name')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input
           id='username'
           type='text'
@@ -62,10 +65,12 @@ const SignupFormComponent = () => {
         />
         {errors.name && <p className='text-destructive'>{errors.name.message}</p>}
       </div>
+
       <div className='space-y-1'>
         <Label htmlFor='email' className='leading-5'>
           {translations('email')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input
           type='email'
           id='email'
@@ -80,6 +85,7 @@ const SignupFormComponent = () => {
         <Label htmlFor='password' className='leading-5'>
           {translations('password')} <span className='text-destructive'>*</span>
         </Label>
+
         <div className='relative'>
           <Input
             id='password'
@@ -89,6 +95,7 @@ const SignupFormComponent = () => {
             {...register('password')}
             aria-invalid={errors.password ? true : undefined}
           />
+
           <Button
             variant='ghost'
             size='icon'
@@ -100,6 +107,7 @@ const SignupFormComponent = () => {
               {isVisible ? translations('actions.hidePassword') : translations('actions.showPassword')}
             </span>
           </Button>
+
           {errors.password && <p className='text-destructive'>{errors.password.message}</p>}
         </div>
       </div>
@@ -108,6 +116,7 @@ const SignupFormComponent = () => {
         <Label htmlFor='confirmPassword' className='leading-5'>
           {translations('confirmPassword')} <span className='text-destructive'>*</span>
         </Label>
+
         <Input
           id='confirmPassword'
           type='password'
@@ -116,6 +125,7 @@ const SignupFormComponent = () => {
           {...register('confirmPassword')}
           aria-invalid={errors.confirmPassword ? true : undefined}
         />
+
         {errors.confirmPassword && <p className='text-destructive'>{errors.confirmPassword.message}</p>}
       </div>
 

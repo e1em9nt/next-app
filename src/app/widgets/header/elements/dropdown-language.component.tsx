@@ -21,8 +21,9 @@ interface ILanguageDropdownProps {
 const LanguageDropdownComponent = (props: ILanguageDropdownProps) => {
   const { defaultOpen, align, trigger } = props
 
-  const pathname = usePathname()
   const params = useParams()
+
+  const pathname = usePathname()
   const router = useRouter()
 
   const [language, setLanguage] = useState(params.locale as string)
@@ -36,6 +37,7 @@ const LanguageDropdownComponent = (props: ILanguageDropdownProps) => {
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
+
       <DropdownMenuContent className='w-25' align={align || 'end'}>
         <DropdownMenuRadioGroup value={language} onValueChange={handleLanguageChange}>
           <DropdownMenuRadioItem
@@ -44,6 +46,7 @@ const LanguageDropdownComponent = (props: ILanguageDropdownProps) => {
           >
             English
           </DropdownMenuRadioItem>
+
           <DropdownMenuRadioItem
             value='de'
             className='data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground pl-2 text-base [&>span]:hidden'

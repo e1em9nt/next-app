@@ -29,6 +29,7 @@ const ProductCardComponent = (props: IProductCardProps) => {
             className={`${isCompact && 'transition-transform duration-300 group-hover:scale-105'} h-59.5 w-full object-contain`}
           />
         </CardImageContainerComponent>
+
         <div className='flex items-center justify-between gap-1.5'>
           <div className='text-foreground text-lg font-semibold'>
             {formatCurrency.number(product.price, {
@@ -37,12 +38,16 @@ const ProductCardComponent = (props: IProductCardProps) => {
               maximumFractionDigits: 2,
             })}
           </div>
+
           <Badge variant='secondary' className='sm:text-sm'>
             {product.category}
           </Badge>
         </div>
+
         <h3 className={`${isCompact && 'line-clamp-2 h-13'} text-lg font-medium md:text-xl`}>{product.title}</h3>
+
         {!isCompact && <p className='text-muted-foreground'>{product.description}</p>}
+
         <div className='flex flex-wrap items-center justify-between gap-4'>
           <div>
             <span>
@@ -53,6 +58,7 @@ const ProductCardComponent = (props: IProductCardProps) => {
               {t('count')}: {product.rating.count}
             </span>
           </div>
+
           <ProductCardActionComponent isCompact={isCompact} href={`/products/${product.id}`} />
         </div>
       </CardContent>

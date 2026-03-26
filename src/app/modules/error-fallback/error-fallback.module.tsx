@@ -14,6 +14,7 @@ function ErrorFallbackModule(props: IErrorFallbackProps) {
   return (
     <div className='flex min-h-[calc(100vh-64px)] flex-col items-center justify-center px-4 py-8 text-center'>
       <h2 className='mb-6 text-5xl font-semibold'>Something went wrong!</h2>
+
       <div className='flex gap-4'>
         {reset && (
           <Button variant='default' className='w-28' onClick={reset}>
