@@ -1,11 +1,27 @@
-import { useQuery } from '@tanstack/react-query'
+import { queryOptions, useQuery } from '@tanstack/react-query'
 
-import { getProducts } from './products.api'
+import { getProductById, getProducts } from './products.api'
 
-export const useProducts = () => {
-  return useQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
+// query options
+export const productsQueryOptions = queryOptions({
+  queryKey: ['products'],
+  queryFn: getProducts,
+  staleTime: 1000 * 60 * 60,
+})
+
+export const productQueryOptions = (id: string) => {
+  return queryOptions({
+    queryKey: ['products', id],
+    queryFn: ({ signal }) => getProductById(id, signal),
     staleTime: 1000 * 60 * 60,
   })
+}
+
+// hook
+export const useProducts = () => {
+  return useQuery(productsQueryOptions)
+}
+
+export const useProductById = (id: string) => {
+  return useQuery(productQueryOptions(id))
 }

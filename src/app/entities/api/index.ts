@@ -1,1 +1,8 @@
-export { getProductById, getProducts, useProducts } from './products'
+export {
+  getProductById,
+  getProducts,
+  productQueryOptions,
+  productsQueryOptions,
+  useProductById,
+  useProducts,
+} from './products'

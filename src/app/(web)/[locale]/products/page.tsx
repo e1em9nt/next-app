@@ -2,7 +2,7 @@ import { type NextPage } from 'next'
 
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
-import { getProducts } from '@/app/entities/api'
+import { productsQueryOptions } from '@/app/entities/api'
 import { ProductListModule } from '@/app/modules/product-list'
 import { getQueryClient } from '@/pkg/rest-api'
 
@@ -16,10 +16,7 @@ interface IProps {}
 const Page: NextPage<Readonly<IProps>> = async () => {
   const queryClient = getQueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
-  })
+  await queryClient.prefetchQuery(productsQueryOptions)
 
   // return
   return (
