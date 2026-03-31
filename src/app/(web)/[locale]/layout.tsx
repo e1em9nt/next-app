@@ -32,7 +32,7 @@ export function generateStaticParams() {
 }
 
 // component
-const LocaleLayout: FC<Readonly<IProps>> = async (props: IProps) => {
+const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
   const { children, params } = props
   const { locale } = await params
 

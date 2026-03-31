@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useFormatter, useTranslations } from 'next-intl'
+import { type FC } from 'react'
 
 import { Badge } from '@/pkg/theme/ui/badge'
 import { Card, CardContent } from '@/pkg/theme/ui/card'
@@ -7,7 +8,8 @@ import { Card, CardContent } from '@/pkg/theme/ui/card'
 import { CardImageContainerComponent, ProductCardActionComponent } from './elements'
 import { IProductCardProps } from './product-card.interface'
 
-const ProductCardComponent = (props: IProductCardProps) => {
+// component
+const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
   const { product, imgPriority, variant = 'compact' } = props
 
   const formatCurrency = useFormatter()
@@ -15,6 +17,7 @@ const ProductCardComponent = (props: IProductCardProps) => {
 
   const isCompact = variant === 'compact'
 
+  // return
   return (
     <Card className='group h-full overflow-hidden px-2 shadow-none'>
       <CardContent className='space-y-3.5'>

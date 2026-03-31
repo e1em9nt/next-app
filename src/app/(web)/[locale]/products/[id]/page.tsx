@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 }
 
 // component
-const Page: NextPage<Readonly<IProps>> = async (props: IProps) => {
+const Page: NextPage<Readonly<IProps>> = async (props) => {
   const { params } = props
   const { id } = await params
 

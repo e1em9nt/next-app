@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { type ReactNode, useState } from 'react'
+import { type FC, type ReactNode, useState } from 'react'
 
 import { usePathname, useRouter } from '@/pkg/locale'
 import {
@@ -12,13 +12,15 @@ import {
   DropdownMenuTrigger,
 } from '@/pkg/theme/ui/dropdown-menu'
 
-interface ILanguageDropdownProps {
+// interface
+interface IProps {
   trigger: ReactNode
   defaultOpen?: boolean
   align?: 'start' | 'center' | 'end'
 }
 
-const LanguageDropdownComponent = (props: ILanguageDropdownProps) => {
+// component
+const LanguageDropdownComponent: FC<Readonly<IProps>> = (props) => {
   const { defaultOpen, align, trigger } = props
 
   const params = useParams()
@@ -28,12 +30,14 @@ const LanguageDropdownComponent = (props: ILanguageDropdownProps) => {
 
   const [language, setLanguage] = useState(params.locale as string)
 
+  // handler
   const handleLanguageChange = (nextLocale: string) => {
     setLanguage(nextLocale)
     // @ts-expect-error -- useParams returns a generic object, but router.replace handles it correctly
     router.replace({ pathname, params }, { locale: nextLocale })
   }
 
+  // return
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>

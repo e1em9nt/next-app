@@ -2,7 +2,7 @@
 
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -15,7 +15,11 @@ import { Label } from '@/pkg/theme/ui/label'
 
 import { createLoginSchema, type TLoginSchemaData } from './auth.schemas'
 
-const LoginFormComponent = () => {
+// interface
+interface IProps {}
+
+// component
+const LoginFormComponent: FC<Readonly<IProps>> = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const router = useRouter()
@@ -38,6 +42,7 @@ const LoginFormComponent = () => {
     },
   })
 
+  // handler
   const handleLoginFormSubmit = async (data: TLoginSchemaData) => {
     const result = await loginUser(data.email, data.password)
     if (result.success) {
@@ -47,6 +52,7 @@ const LoginFormComponent = () => {
     }
   }
 
+  // return
   return (
     <form className='space-y-4' onSubmit={handleSubmit(handleLoginFormSubmit)} noValidate>
       <div className='space-y-1'>

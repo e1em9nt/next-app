@@ -1,13 +1,17 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useTransition } from 'react'
+import { type FC, useTransition } from 'react'
 
 import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Button } from '@/pkg/theme/ui/button'
 
-const ViewProductsButtonComponent = () => {
+// interface
+interface IProps {}
+
+// component
+const ViewProductsButtonComponent: FC<Readonly<IProps>> = () => {
   const [isPending, startTransition] = useTransition()
 
   const router = useRouter()
@@ -15,12 +19,14 @@ const ViewProductsButtonComponent = () => {
   const { currentUser } = useAuthStore()
   const translations = useTranslations('HomePage')
 
+  // handler
   const handleClick = () => {
     startTransition(() => {
       router.push(currentUser ? '/products' : '/auth')
     })
   }
 
+  // return
   return (
     <Button
       onClick={handleClick}
