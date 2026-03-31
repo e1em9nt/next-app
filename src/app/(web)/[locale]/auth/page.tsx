@@ -1,14 +1,19 @@
+import { type Metadata, type NextPage } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { Suspense } from 'react'
 
 import { AuthModule } from '@/app/modules/auth'
 import { type ILocaleParamsProps } from '@/app/shared/interfaces'
 
-interface IAuthMetadataProps extends ILocaleParamsProps {
+// interface
+interface IMetadataProps extends ILocaleParamsProps {
   searchParams: Promise<{ tab: string }>
 }
 
-export async function generateMetadata({ params, searchParams }: Readonly<IAuthMetadataProps>) {
+interface IProps {}
+
+// metadata
+export async function generateMetadata({ params, searchParams }: Readonly<IMetadataProps>): Promise<Metadata> {
   const { tab } = await searchParams
   const { locale } = await params
 
@@ -22,7 +27,9 @@ export async function generateMetadata({ params, searchParams }: Readonly<IAuthM
   }
 }
 
-function Auth() {
+// component
+const Page: NextPage<Readonly<IProps>> = () => {
+  //return
   return (
     <Suspense>
       <AuthModule />
@@ -30,4 +37,4 @@ function Auth() {
   )
 }
 
-export default Auth
+export default Page

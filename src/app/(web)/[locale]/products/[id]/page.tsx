@@ -1,13 +1,16 @@
+import { type Metadata, type NextPage } from 'next'
 import { notFound } from 'next/navigation'
 
 import { getProductById } from '@/app/entities/api/products/products.api'
 import { ProductModule } from '@/app/modules/product'
 
-interface IProductDetailsProps {
+// interface
+interface IProps {
   params: Promise<{ id: string }>
 }
 
-export async function generateMetadata({ params }: IProductDetailsProps) {
+// metadata
+export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const { id } = await params
 
   const product = await getProductById(id)
@@ -20,7 +23,8 @@ export async function generateMetadata({ params }: IProductDetailsProps) {
   }
 }
 
-async function ProductDetails(props: IProductDetailsProps) {
+// component
+const Page: NextPage<Readonly<IProps>> = async (props: IProps) => {
   const { params } = props
   const { id } = await params
 
@@ -28,7 +32,8 @@ async function ProductDetails(props: IProductDetailsProps) {
 
   if (!product) notFound()
 
+  // return
   return <ProductModule product={product} />
 }
 
-export default ProductDetails
+export default Page
