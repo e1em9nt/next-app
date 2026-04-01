@@ -1,25 +1,28 @@
-import { queryOptions, useQuery } from '@tanstack/react-query'
+import { infiniteQueryOptions, queryOptions, useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 import { getProductById, getProducts } from './products.api'
 
 // query options
-export const productsQueryOptions = queryOptions({
+export const productListQueryOptions = infiniteQueryOptions({
   queryKey: ['products'],
-  queryFn: getProducts,
-  staleTime: 1000 * 60 * 60,
+  queryFn: ({ pageParam, signal }) => getProducts(pageParam as number, signal),
+  initialPageParam: 0,
+  getNextPageParam: (lastPage) => {
+    const nextSkip = lastPage.skip + lastPage.limit
+    return nextSkip < lastPage.total ? nextSkip : undefined
+  },
 })
 
 export const productQueryOptions = (id: string) => {
   return queryOptions({
     queryKey: ['products', id],
     queryFn: ({ signal }) => getProductById(id, signal),
-    staleTime: 1000 * 60 * 60,
   })
 }
 
-// hook
+// hooks
 export const useProducts = () => {
-  return useQuery(productsQueryOptions)
+  return useInfiniteQuery(productListQueryOptions)
 }
 
 export const useProductById = (id: string) => {

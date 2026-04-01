@@ -1,8 +1,8 @@
 export {
   getProductById,
   getProducts,
+  productListQueryOptions,
   productQueryOptions,
-  productsQueryOptions,
   useProductById,
   useProducts,
 } from './products'

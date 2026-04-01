@@ -1,29 +1,43 @@
-import { IProduct } from '@/app/entities/models'
+import { IProductDetails, IProductListResponse } from '@/app/entities/models'
 import { envClient } from '@/config/env'
 
-export const getProducts = async ({ signal }: { signal?: AbortSignal } = {}): Promise<IProduct[]> => {
-  const response = await fetch(`${envClient.NEXT_PUBLIC_API_URL}/products`, { next: { tags: ['products'] }, signal })
+// constant
+const REQUEST_LIMIT = 20
+const PRODUCTS_SELECT = [
+  'id',
+  'title',
+  'category',
+  'price',
+  'discountPercentage',
+  'rating',
+  'brand',
+  'availabilityStatus',
+  'thumbnail',
+]
+
+// fetchers
+export const getProducts = async (skip: number, signal?: AbortSignal): Promise<IProductListResponse> => {
+  const response = await fetch(
+    `${envClient.NEXT_PUBLIC_API_URL}/products?limit=${REQUEST_LIMIT}&skip=${skip}&select=${PRODUCTS_SELECT.map((item) => item.trim()).join(',')}`,
+    {
+      next: { tags: ['products'] },
+      signal,
+    },
+  )
 
   if (!response.ok) throw new Error('Failed to fetch products')
 
   return response.json()
 }
 
-export const getProductById = async (id: string, signal?: AbortSignal): Promise<IProduct | null> => {
+export const getProductById = async (id: string, signal?: AbortSignal): Promise<IProductDetails | null> => {
   const response = await fetch(`${envClient.NEXT_PUBLIC_API_URL}/products/${id}`, {
     cache: 'force-cache',
     next: { revalidate: 3600, tags: ['products', `product-${id}`] },
     signal,
   })
 
-  if (!response.ok) return null
+  if (!response.ok) throw new Error(`Failed to fetch product #${id}`)
 
-  const text = await response.text()
-  if (!text) return null
-
-  try {
-    return JSON.parse(text) as IProduct
-  } catch {
-    return null
-  }
+  return response.json()
 }
