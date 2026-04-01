@@ -1,11 +1,11 @@
 import { type FC } from 'react'
 
-import { type IProduct } from '@/app/entities/models'
+import { type IProductDetails } from '@/app/entities/models'
 import { ProductCardComponent } from '@/app/features/product-card'
 
 // interface
 interface IProps {
-  product: IProduct
+  product: IProductDetails
 }
 
 // component

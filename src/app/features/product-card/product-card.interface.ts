@@ -1,7 +1,7 @@
-import { IProduct } from '@/app/entities/models'
+import { IProductDetails } from '@/app/entities/models'
 
 export interface IProductCardProps {
-  product: IProduct
+  product: IProductDetails
   imgPriority?: boolean
   variant?: 'detailed' | 'compact'
 }
