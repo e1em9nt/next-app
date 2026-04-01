@@ -1,18 +1,21 @@
+import { type Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { type ReactNode } from 'react'
+import { type FC, type ReactNode } from 'react'
 
 import { type ILocaleParamsProps } from '@/app/shared/interfaces'
 import { HeaderComponent } from '@/app/widgets/header'
 import { routing } from '@/pkg/locale'
 import { RestApiProvider } from '@/pkg/rest-api'
 
-interface ILocaleLayoutProps extends ILocaleParamsProps {
+// interface
+interface IProps extends ILocaleParamsProps {
   children: ReactNode
 }
 
-export async function generateMetadata({ params }: ILocaleParamsProps) {
+// metadata
+export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const { locale } = await params
 
   const translations = await getTranslations({ locale, namespace: 'HomePage' })
@@ -23,11 +26,13 @@ export async function generateMetadata({ params }: ILocaleParamsProps) {
   }
 }
 
+// static params
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
-async function LocaleLayout(props: Readonly<ILocaleLayoutProps>) {
+// component
+const LocaleLayout: FC<Readonly<IProps>> = async (props) => {
   const { children, params } = props
   const { locale } = await params
 
@@ -37,6 +42,7 @@ async function LocaleLayout(props: Readonly<ILocaleLayoutProps>) {
 
   setRequestLocale(locale)
 
+  // return
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>

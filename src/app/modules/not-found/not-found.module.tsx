@@ -1,7 +1,14 @@
+import { type FC } from 'react'
+
 import { Link } from '@/pkg/locale'
 import { buttonVariants } from '@/pkg/theme/ui/button'
 
-function NotFoundModule() {
+// interface
+interface IProps {}
+
+// component
+const NotFoundModule: FC<Readonly<IProps>> = () => {
+  // return
   return (
     <div className='flex min-h-[calc(100vh-64px)] flex-col items-center justify-center px-4 py-8 text-center'>
       <h2 className='mb-6 text-5xl font-semibold'>Whoops!</h2>

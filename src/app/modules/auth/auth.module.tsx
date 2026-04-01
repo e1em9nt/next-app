@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { useEffect } from 'react'
+import { type FC, useEffect } from 'react'
 
 import authBackground from '@/app/shared/assets/icon/main-bg.png'
 import { useAuthStore } from '@/app/shared/store'
@@ -12,7 +12,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
 
 import { AuthCardComponent } from './elements'
 
-function AuthModule() {
+// interface
+interface IProps {}
+
+// component
+const AuthModule: FC<Readonly<IProps>> = () => {
   const router = useRouter()
 
   const searchParams = useSearchParams()
@@ -27,12 +31,15 @@ function AuthModule() {
     }
   }, [currentUser, _hasHydrated, router])
 
+  // handler
   const handleTabChange = (value: string) => {
     router.replace(value === 'login' ? '/auth' : '/auth?tab=signup')
   }
 
+  // return for authenticated user
   if (!_hasHydrated || currentUser) return null
 
+  // return
   return (
     <main className='relative min-h-[calc(100vh-64px)] px-2.5 py-8 sm:px-5'>
       <Image

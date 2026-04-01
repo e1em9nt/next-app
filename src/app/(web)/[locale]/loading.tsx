@@ -1,5 +1,11 @@
+import { type NextPage } from 'next'
+
 import { SpinnerComponent } from '@/app/shared/ui'
 
-export default function Loading() {
+// component
+const Loading: NextPage = () => {
+  // return
   return <SpinnerComponent />
 }
+
+export default Loading

@@ -1,11 +1,13 @@
 import { z } from 'zod'
 
+// sign in schema
 export const createLoginSchema = (t: (key: string) => string) =>
   z.object({
     email: z.email(t('errors.emailRequired')),
     password: z.string().nonempty(t('errors.passwordRequired')),
   })
 
+// sign up schema
 export const createSignupSchema = (t: (key: string) => string) =>
   z
     .object({
@@ -19,5 +21,6 @@ export const createSignupSchema = (t: (key: string) => string) =>
       path: ['confirmPassword'],
     })
 
+// type
 export type TLoginSchemaData = z.infer<ReturnType<typeof createLoginSchema>>
 export type TSignupSchemaData = z.infer<ReturnType<typeof createSignupSchema>>
