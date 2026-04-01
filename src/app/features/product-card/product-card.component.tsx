@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useFormatter, useTranslations } from 'next-intl'
 import { type FC } from 'react'
 
+import { type IProductDetails } from '@/app/entities/models'
 import { Badge } from '@/pkg/theme/ui/badge'
 import { Card, CardContent } from '@/pkg/theme/ui/card'
 
@@ -65,7 +66,7 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
 
         <h3 className={`${isCompact && 'line-clamp-2 h-13'} text-lg font-medium md:text-xl`}>{product.title}</h3>
 
-        {!isCompact && <p className='text-muted-foreground'>{product.description}</p>}
+        {!isCompact && <p className='text-muted-foreground'>{(product as IProductDetails).description}</p>}
 
         <div className='flex flex-wrap items-center justify-between gap-4'>
           <div>
