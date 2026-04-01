@@ -7,15 +7,19 @@ import { Card, CardContent } from '@/pkg/theme/ui/card'
 
 import { CardImageContainerComponent, ProductCardActionComponent } from './elements'
 import { IProductCardProps } from './product-card.interface'
+import { calculateOriginalPrice } from './product-card.utils'
 
 // component
 const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
   const { product, imgPriority, variant = 'compact' } = props
 
   const formatCurrency = useFormatter()
-  const t = useTranslations('Products.rating')
+  const t = useTranslations('Product')
 
   const isCompact = variant === 'compact'
+  const hasDiscount = product.discountPercentage > 0
+
+  const originalPrice = calculateOriginalPrice(product.price, product.discountPercentage)
 
   // return
   return (
@@ -25,7 +29,7 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
           <Image
             width={500}
             height={500}
-            src={product.image}
+            src={product.thumbnail}
             alt={product.title}
             quality={60}
             priority={!isCompact || imgPriority}
@@ -34,12 +38,24 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
         </CardImageContainerComponent>
 
         <div className='flex items-center justify-between gap-1.5'>
-          <div className='text-foreground text-lg font-semibold'>
-            {formatCurrency.number(product.price, {
-              style: 'currency',
-              currency: 'USD',
-              maximumFractionDigits: 2,
-            })}
+          <div className='flex items-center gap-2'>
+            <div className={`${hasDiscount ? 'text-red-500' : 'text-foreground'} text-lg font-semibold`}>
+              {formatCurrency.number(product.price, {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 2,
+              })}
+            </div>
+
+            {hasDiscount && (
+              <div className='text-muted-foreground text-lg line-through'>
+                {formatCurrency.number(originalPrice, {
+                  style: 'currency',
+                  currency: 'USD',
+                  maximumFractionDigits: 2,
+                })}
+              </div>
+            )}
           </div>
 
           <Badge variant='secondary' className='sm:text-sm'>
@@ -53,13 +69,7 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
 
         <div className='flex flex-wrap items-center justify-between gap-4'>
           <div>
-            <span>
-              {t('rate')}: {product.rating.rate}
-            </span>{' '}
-            /{' '}
-            <span>
-              {t('count')}: {product.rating.count}
-            </span>
+            {t('rating')}: {product.rating} / 5
           </div>
 
           <ProductCardActionComponent isCompact={isCompact} href={`/products/${product.id}`} />
