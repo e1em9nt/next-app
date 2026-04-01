@@ -19,13 +19,13 @@ test.describe('Product Navigation', () => {
     const firstCard = page.locator('[data-slot="card"]').first()
     await expect(firstCard).toBeVisible()
 
-    const listTitle = await firstCard.locator('h3').textContent()
+    const listTitle = await firstCard.locator('h4').textContent()
     const cleanTitle = listTitle?.trim()
 
     await firstCard.locator('img').click()
     await expect(page).toHaveURL(/\/products\/\d+/)
 
-    const detailHeader = page.locator('h3')
+    const detailHeader = page.locator('h4')
     await expect(detailHeader).toBeVisible()
     await expect(detailHeader).toHaveText(cleanTitle!)
   })

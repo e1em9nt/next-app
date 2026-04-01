@@ -31,7 +31,7 @@ test.describe('Product list page', () => {
 
     await expect(firstCard.locator('img')).toBeVisible()
     await expect(firstCard.locator('h3')).toBeVisible()
-    await expect(firstCard.getByText('$', { exact: false })).toBeVisible()
+    await expect(firstCard.getByText('$', { exact: false }).first()).toBeVisible()
     await expect(firstCard.locator('[data-slot="badge"]')).toBeVisible()
     await expect(firstCard.locator('text=/Rating/')).toBeVisible()
     await expect(firstCard.locator('a, button').last()).toBeVisible()

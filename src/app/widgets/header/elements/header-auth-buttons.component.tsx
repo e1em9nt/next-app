@@ -42,7 +42,7 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
           <span>{currentUser.name}</span>
         </div>
 
-        <Button variant='outline' onClick={handleLogout} className='px-4'>
+        <Button variant='outline' onClick={handleLogout} className='cursor-pointer px-4'>
           {translations('logout')}
         </Button>
       </div>
