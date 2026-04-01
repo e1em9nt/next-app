@@ -37,7 +37,7 @@ export const getProductById = async (id: string, signal?: AbortSignal): Promise<
     signal,
   })
 
-  if (!response.ok) throw new Error(`Failed to fetch product #${id}`)
+  if (!response.ok) return null
 
   return response.json()
 }
