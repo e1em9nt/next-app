@@ -17,10 +17,13 @@
     },
     "Products": {
         "heading": "Produkte",
-        "rating": {
-            "rate": "Bewertung",
-            "count": "Rezensionen"
+        "pagination": {
+            "loading": "Lade mehr Produkte...",
+            "end": "Sie haben das Ende des Katalogs erreicht!"
         }
+    },
+    "Product": {
+        "rating": "Bewertung"
     },
     "AuthPage": {
         "heading": {
