@@ -1,0 +1,62 @@
+{
+  "name": "my-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" \"tests/**/*.{ts,tsx}\" --fix",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\" \"tests/**/*.{ts,tsx}\"",
+    "type-check": "tsc --noEmit",
+    "format": "npm run type-check && npm run lint && npm run prettier",
+    "devsafe": "rm -rf .next && next dev",
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@t3-oss/env-nextjs": "^0.13.11",
+    "@tanstack/react-query": "^5.90.21",
+    "@tanstack/react-query-devtools": "^5.91.3",
+    "bcryptjs": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.577.0",
+    "next": "15.5.12",
+    "next-intl": "^4.8.3",
+    "radix-ui": "^1.4.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.71.2",
+    "react-intersection-observer": "^10.0.3",
+    "shadcn": "^4.0.6",
+    "tailwind-merge": "^3.5.0",
+    "tw-animate-css": "^1.4.0",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.58.2",
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.12",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "volta": {
+    "node": "22.x.x",
+    "npm": "10.x.x"
+  }
+}
