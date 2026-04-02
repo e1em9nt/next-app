@@ -1,7 +1,10 @@
+'use client'
+
 import { type FC } from 'react'
 
 import { type IProductDetails } from '@/app/entities/models'
 import { ProductCardComponent } from '@/app/features/product-card'
+import { useRequireAuth } from '@/app/shared/hooks'
 
 // interface
 interface IProps {
@@ -11,6 +14,11 @@ interface IProps {
 // component
 const ProductModule: FC<Readonly<IProps>> = (props) => {
   const { product } = props
+
+  const { isAuthenticated } = useRequireAuth()
+
+  // return for unauthenticated user
+  if (!isAuthenticated) return null
 
   // return
   return (
