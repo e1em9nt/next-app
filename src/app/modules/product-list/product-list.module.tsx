@@ -1,11 +1,11 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { type FC } from 'react'
+import { type FC, useCallback } from 'react'
 
 import { useProducts } from '@/app/entities/api'
 import { ProductCardComponent } from '@/app/features/product-card'
-import { useRequireAuth } from '@/app/shared/hooks'
+import { useIntersection, useRequireAuth } from '@/app/shared/hooks'
 
 // interface
 interface IProps {}
@@ -13,9 +13,23 @@ interface IProps {}
 // component
 const ProductListModule: FC<Readonly<IProps>> = () => {
   const { isAuthenticated } = useRequireAuth()
-  const { data: products = [] } = useProducts()
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useProducts()
 
   const t = useTranslations('Products')
+
+  const products = data?.pages.flatMap((page) => page.products) ?? []
+
+  //handler
+  const handleIntersection = useCallback(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage()
+    }
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage])
+
+  // use intersection
+  const { ref: intersectionRef } = useIntersection({
+    onIntersect: handleIntersection,
+  })
 
   // return for unauthenticated user
   if (!isAuthenticated) return null
@@ -29,6 +43,12 @@ const ProductListModule: FC<Readonly<IProps>> = () => {
         {products.map((product, index: number) => (
           <ProductCardComponent key={product.id} product={product} imgPriority={index < 4} />
         ))}
+      </div>
+
+      <div ref={intersectionRef} className='py-10 text-center'>
+        {isFetchingNextPage && <p className='text-muted-foreground text-sm'>{t('pagination.loading')}</p>}
+
+        {!hasNextPage && products.length > 0 && <p className='text-muted-foreground text-sm'>{t('pagination.end')}</p>}
       </div>
     </main>
   )

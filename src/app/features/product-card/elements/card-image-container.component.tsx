@@ -13,7 +13,7 @@ interface IProps {
 const CardImageContainerComponent: FC<Readonly<IProps>> = (props) => {
   const { children, isCompact, href = '' } = props
 
-  const className = 'mb-6 overflow-hidden rounded-lg sm:mb-12'
+  const className = 'relative mb-6 overflow-hidden rounded-lg'
 
   if (isCompact) {
     // return link as image container
