@@ -1,8 +1,23 @@
 'use client'
 
-import { ErrorFallbackModule } from '@/app/modules/error-fallback'
+import { type FC, useEffect } from 'react'
 
-export default function GlobalError() {
+import { ErrorFallbackModule } from '@/app/modules/error-fallback'
+import { type IErrorProps } from '@/app/shared/interfaces'
+
+// type
+type TProps = Required<IErrorProps>
+
+// component
+const Page: FC<Readonly<TProps>> = (props) => {
+  const { error } = props
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.error(error)
+  }, [error])
+
+  // return
   return (
     <html lang='en'>
       <body>
@@ -13,3 +28,5 @@ export default function GlobalError() {
     </html>
   )
 }
+
+export default Page

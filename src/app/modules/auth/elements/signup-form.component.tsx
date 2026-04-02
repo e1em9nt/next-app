@@ -2,7 +2,7 @@
 
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -15,7 +15,11 @@ import { Label } from '@/pkg/theme/ui/label'
 
 import { createSignupSchema, type TSignupSchemaData } from './auth.schemas'
 
-const SignupFormComponent = () => {
+// interface
+interface IProps {}
+
+// component
+const SignupFormComponent: FC<Readonly<IProps>> = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const router = useRouter()
@@ -40,6 +44,7 @@ const SignupFormComponent = () => {
     },
   })
 
+  // handler
   const handleSignupFormSubmit = async (data: TSignupSchemaData) => {
     const result = await registerUser(data.name, data.email, data.password)
     if (result.success) {
@@ -49,6 +54,7 @@ const SignupFormComponent = () => {
     }
   }
 
+  // return
   return (
     <form className='space-y-4' onSubmit={handleSubmit(handleSignupFormSubmit)} noValidate>
       <div className='space-y-1'>

@@ -1,12 +1,28 @@
-export interface IProduct {
+interface IProductListItem {
   id: number
   title: string
-  price: number
-  description: string
   category: string
-  image: string
-  rating: {
-    rate: number
-    count: number
-  }
+  price: number
+  discountPercentage: number
+  rating: number
+  brand: string
+  availabilityStatus: string
+  thumbnail: string
 }
+
+interface IProductListResponse {
+  products: IProductListItem[]
+  total: number
+  skip: number
+  limit: number
+}
+
+interface IProductDetails extends IProductListItem {
+  description: string
+  warrantyInformation: string
+  shippingInformation: string
+  returnPolicy: string
+  minimumOrderQuantity: number
+}
+
+export type { IProductDetails, IProductListItem, IProductListResponse }

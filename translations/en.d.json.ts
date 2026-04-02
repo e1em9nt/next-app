@@ -20,10 +20,13 @@ declare const messages: {
     },
     "Products": {
         "heading": "Products",
-        "rating": {
-            "rate": "Rating",
-            "count": "Reviews"
+        "pagination": {
+            "loading": "Loading more products...",
+            "end": "You have reached the end of the catalog!"
         }
+    },
+    "Product": {
+        "rating": "Rating"
     },
     "AuthPage": {
         "heading": {

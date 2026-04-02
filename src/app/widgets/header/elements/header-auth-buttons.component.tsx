@@ -2,13 +2,18 @@
 
 import { LogIn, User } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { type FC } from 'react'
 
 import { useAuthStore } from '@/app/shared/store'
 import { Link, usePathname, useRouter } from '@/pkg/locale'
 import { cn } from '@/pkg/theme/lib/utils'
 import { Button, buttonVariants } from '@/pkg/theme/ui/button'
 
-const HeaderAuthButtonsComponent = () => {
+// interface
+interface IProps {}
+
+// component
+const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
   const pathname = usePathname()
   const router = useRouter()
 
@@ -18,13 +23,16 @@ const HeaderAuthButtonsComponent = () => {
   const isRootPage = pathname === '/' || pathname.match(/^\/[a-z]{2}\/?$/)
   const isProductPage = pathname.includes('/products')
 
+  // handler
   function handleLogout() {
     logout()
     router.push('/')
   }
 
+  // return in not hydrated state
   if (!_hasHydrated) return null
 
+  // return for authenticated user
   if ((isProductPage && currentUser) || (isRootPage && currentUser)) {
     return (
       <div className='flex items-center gap-5'>
@@ -34,13 +42,14 @@ const HeaderAuthButtonsComponent = () => {
           <span>{currentUser.name}</span>
         </div>
 
-        <Button variant='outline' onClick={handleLogout} className='px-4'>
+        <Button variant='outline' onClick={handleLogout} className='cursor-pointer px-4'>
           {translations('logout')}
         </Button>
       </div>
     )
   }
 
+  // return in public page for unauthenticated user
   if (isRootPage && !currentUser) {
     return (
       <div className='flex items-center gap-3'>
@@ -55,6 +64,7 @@ const HeaderAuthButtonsComponent = () => {
     )
   }
 
+  // return in protected pages for unauthenticated user
   return null
 }
 

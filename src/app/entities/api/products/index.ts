@@ -1,2 +1,2 @@
-export { getProductById, getProducts } from './products.api'
-export { useProducts } from './products.query'
+export { getProductById, getProducts, getTopProductIds } from './products.api'
+export { productListQueryOptions, productQueryOptions, useProductById, useProducts } from './products.query'

@@ -4,10 +4,12 @@ import { persist } from 'zustand/middleware'
 
 import { IAuthState, IRegisteredUser } from '@/app/shared/interfaces'
 
+// helper
 function generateToken(email: string): string {
   return btoa(`${email}:${Date.now()}:${Math.random()}`)
 }
 
+// store
 export const useAuthStore = create<IAuthState>()(
   persist(
     (set, get) => ({

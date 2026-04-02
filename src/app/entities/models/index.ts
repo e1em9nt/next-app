@@ -1,1 +1,1 @@
-export type { IProduct } from './product.model'
+export * from './product.model'
