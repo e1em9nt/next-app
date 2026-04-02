@@ -1,6 +1,7 @@
 export {
   getProductById,
   getProducts,
+  getTopProductIds,
   productListQueryOptions,
   productQueryOptions,
   useProductById,

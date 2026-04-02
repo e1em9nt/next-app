@@ -1,3 +1,4 @@
+import { CircleCheckBig, PackagePlus, RefreshCw, Truck } from 'lucide-react'
 import Image from 'next/image'
 import { useFormatter, useTranslations } from 'next-intl'
 import { type FC } from 'react'
@@ -37,7 +38,7 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
             className={`${isCompact && 'transition-transform duration-300 group-hover:scale-105'} h-59.5 w-full object-contain`}
           />
 
-          {product.availabilityStatus.toLowerCase() !== 'in stock' && (
+          {product.availabilityStatus?.toLowerCase() !== 'in stock' && (
             <div className='text-foreground absolute bottom-2 left-0 rounded-r-sm bg-yellow-400 px-4 py-0.5 text-xs'>
               {product.availabilityStatus}
             </div>
@@ -78,6 +79,35 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
           </h4>
           {!isCompact && <p className='text-muted-foreground'>{(product as IProductDetails).description}</p>}
         </div>
+
+        {!isCompact && (
+          <ul className='text-muted-foreground space-y-1.5 border-y py-2'>
+            <li>
+              <span className='mr-2'>
+                <PackagePlus className='text-foreground inline-block size-4' />
+              </span>
+              Minimum Order Quantity: {(product as IProductDetails).minimumOrderQuantity}
+            </li>
+            <li>
+              <span className='mr-2'>
+                <CircleCheckBig className='text-foreground inline-block size-4' />
+              </span>
+              {(product as IProductDetails).warrantyInformation}
+            </li>
+            <li>
+              <span className='mr-2'>
+                <RefreshCw className='text-foreground inline-block size-4' />
+              </span>
+              {(product as IProductDetails).returnPolicy}
+            </li>
+            <li>
+              <span className='mr-2'>
+                <Truck className='text-foreground inline-block size-4' />
+              </span>
+              {(product as IProductDetails).shippingInformation}
+            </li>
+          </ul>
+        )}
 
         <div className='flex flex-wrap items-center justify-between gap-4'>
           <div className='text-muted-foreground md:text-base'>

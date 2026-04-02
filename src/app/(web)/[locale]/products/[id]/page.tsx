@@ -1,9 +1,16 @@
 import { type Metadata, type NextPage } from 'next'
 import { notFound } from 'next/navigation'
 
-import { getProductById, productQueryOptions } from '@/app/entities/api'
+import { getProductById, getTopProductIds, productQueryOptions } from '@/app/entities/api'
 import { ProductModule } from '@/app/modules/product'
+import { routing } from '@/pkg/locale'
 import { getQueryClient } from '@/pkg/rest-api'
+
+// revalidate
+export const revalidate = 3600
+
+// dynamic params
+export const dynamicParams = true
 
 // interface
 interface IProps {
@@ -16,12 +23,26 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 
   const product = await getProductById(id)
 
+  const brand = product?.brand ?? 'Product'
+
   if (!product) notFound()
 
   return {
-    title: product.title,
+    title: `${product.title} - ${brand}`,
     description: product.description,
   }
+}
+
+// static params
+export async function generateStaticParams() {
+  const topProductIds = await getTopProductIds()
+
+  return routing.locales.flatMap((locale) => {
+    return topProductIds.map((product) => ({
+      locale,
+      id: product.id.toString(),
+    }))
+  })
 }
 
 // component
