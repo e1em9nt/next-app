@@ -1,5 +1,5 @@
-type TLocaleParams = Promise<{ locale: string }>
+export type TLocale = { locale: string }
 
 export interface ILocaleParamsProps {
-  params: TLocaleParams
+  params: Promise<TLocale>
 }
