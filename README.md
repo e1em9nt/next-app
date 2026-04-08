@@ -30,7 +30,7 @@ A minimalist e-commerce product catalog built with Next.js 15. Browse a curated 
 | Auth             | Client-side with [bcryptjs](https://github.com/dcodeIO/bcrypt.js) password hashing |
 | E2E Testing      | [Playwright](https://playwright.dev/)                                              |
 | Linting          | [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)                   |
-| API              | [Fake Store API](https://fakestoreapi.com/)                                        |
+| API              | [Dummy JSON API](https://dummyjson.com/docs/products)                                        |
 
 
 ---
