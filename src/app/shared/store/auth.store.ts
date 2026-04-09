@@ -115,6 +115,10 @@ export const useAuthStore = create<IAuthState>()(
         if (state) {
           state.setHasHydrated(true)
         }
+
+        if (state?.token && !document.cookie.includes('auth-token')) {
+          setCookie(state.token)
+        }
       },
 
       partialize: (state) => ({
