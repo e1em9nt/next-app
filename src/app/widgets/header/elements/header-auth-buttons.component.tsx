@@ -39,7 +39,7 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
   if ((isProductPage && currentUser) || (isRootPage && currentUser)) {
     return (
       <div className='flex items-center gap-5'>
-        <div className='flex items-center gap-2 text-sm'>
+        <div className='hidden items-center gap-2 text-sm sm:flex'>
           <User className='size-4' />
 
           <span>{currentUser.name}</span>

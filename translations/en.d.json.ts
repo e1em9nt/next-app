@@ -75,6 +75,7 @@ declare const messages: {
         },
         "errors": {
             "nameRequired": "Name is required",
+            "nameTooLong": "Name must be less than 32 characters",
             "emailRequired": "Invalid email address",
             "passwordRequired": "Password must be at least 8 characters long",
             "confirmPasswordRequired": "Please confirm your password",
