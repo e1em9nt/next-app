@@ -16,7 +16,8 @@ const ViewProductsButtonComponent: FC<Readonly<IProps>> = () => {
 
   const router = useRouter()
 
-  const { currentUser } = useAuthStore()
+  const currentUser = useAuthStore((state) => state.currentUser)
+
   const translations = useTranslations('HomePage')
 
   // handler

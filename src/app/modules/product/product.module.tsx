@@ -2,27 +2,25 @@
 
 import { type FC } from 'react'
 
-import { type IProductDetails } from '@/app/entities/models'
+import { useProductById } from '@/app/entities/api'
 import { ProductCardComponent } from '@/app/features/product-card'
-import { useRequireAuth } from '@/app/shared/hooks'
 
 // interface
 interface IProps {
-  product: IProductDetails
+  id: string
 }
 
 // component
 const ProductModule: FC<Readonly<IProps>> = (props) => {
-  const { product } = props
+  const { id } = props
 
-  const { isAuthenticated } = useRequireAuth()
+  const { data: product } = useProductById(id)
 
-  // return for unauthenticated user
-  if (!isAuthenticated) return null
+  if (!product) return null
 
   // return
   return (
-    <main className='mx-8 my-4 flex min-h-[calc(100vh-100px)] items-center justify-center sm:mx-10 md:mx-14'>
+    <main className='mx-8 my-4 flex min-h-[calc(100vh-64px)] items-center justify-center sm:mx-10 md:mx-14'>
       <div className='w-full lg:w-1/2 2xl:w-1/3'>
         <ProductCardComponent product={product} variant='detailed' />
       </div>

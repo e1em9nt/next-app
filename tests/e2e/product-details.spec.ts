@@ -2,13 +2,13 @@ import { expect, test } from '@playwright/test'
 
 test.describe('Product Navigation', () => {
   test.beforeEach(async ({ context }) => {
-    // Seed localStorage with an authenticated user so useRequireAuth passes
+    // Seed localStorage with an authenticated user
     await context.addInitScript(() => {
       localStorage.setItem(
         'auth-store',
         JSON.stringify({
           state: {
-            currentUser: { name: 'Test User', email: 'test@test.com' },
+            currentUser: { id: '1', name: 'Test User', email: 'test@test.com' },
             token: 'test-token',
             users: [],
           },
@@ -16,6 +16,17 @@ test.describe('Product Navigation', () => {
         }),
       )
     })
+
+    // Seed cookies with an authenticated user
+    await context.addCookies([
+      {
+        name: 'auth-token',
+        value: 'test-token',
+        domain: 'localhost',
+        path: '/',
+        sameSite: 'Lax',
+      },
+    ])
   })
 
   test('should navigate from list to detailed product page', async ({ page }) => {
