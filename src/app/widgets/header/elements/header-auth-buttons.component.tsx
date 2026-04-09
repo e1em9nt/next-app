@@ -29,7 +29,7 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
     router.push('/')
   }
 
-  // return in not hydrated state
+  // return for login/signup button flickering prevention
   if (!_hasHydrated) return null
 
   // return for authenticated user

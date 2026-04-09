@@ -5,14 +5,13 @@ import { type FC, useCallback } from 'react'
 
 import { useProducts } from '@/app/entities/api'
 import { ProductCardComponent } from '@/app/features/product-card'
-import { useIntersection, useRequireAuth } from '@/app/shared/hooks'
+import { useIntersection } from '@/app/shared/hooks'
 
 // interface
 interface IProps {}
 
 // component
 const ProductListModule: FC<Readonly<IProps>> = () => {
-  const { isAuthenticated } = useRequireAuth()
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useProducts()
 
   const t = useTranslations('Products')
@@ -30,9 +29,6 @@ const ProductListModule: FC<Readonly<IProps>> = () => {
   const { ref: intersectionRef } = useIntersection({
     onIntersect: handleIntersection,
   })
-
-  // return for unauthenticated user
-  if (!isAuthenticated) return null
 
   // return
   return (
