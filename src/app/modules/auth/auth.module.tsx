@@ -22,7 +22,9 @@ const AuthModule: FC<Readonly<IProps>> = () => {
   const searchParams = useSearchParams()
   const tab = searchParams.get('tab') ?? 'login'
 
-  const { currentUser, _hasHydrated } = useAuthStore()
+  const currentUser = useAuthStore((state) => state.currentUser)
+  const hasHydrated = useAuthStore((state) => state._hasHydrated)
+
   const translations = useTranslations('AuthPage.heading')
 
   // handler
@@ -31,7 +33,7 @@ const AuthModule: FC<Readonly<IProps>> = () => {
   }
 
   // return for flicker prevention
-  if (!_hasHydrated || currentUser) return null
+  if (!hasHydrated || currentUser) return null
 
   // return
   return (

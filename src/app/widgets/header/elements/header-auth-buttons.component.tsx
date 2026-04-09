@@ -17,7 +17,10 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
   const pathname = usePathname()
   const router = useRouter()
 
-  const { currentUser, logout, _hasHydrated } = useAuthStore()
+  const currentUser = useAuthStore((state) => state.currentUser)
+  const logout = useAuthStore((state) => state.logout)
+  const hasHydrated = useAuthStore((state) => state._hasHydrated)
+
   const translations = useTranslations('Header.auth')
 
   const isRootPage = pathname === '/' || pathname.match(/^\/[a-z]{2}\/?$/)
@@ -30,7 +33,7 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
   }
 
   // return for login/signup button flickering prevention
-  if (!_hasHydrated) return null
+  if (!hasHydrated) return null
 
   // return for authenticated user
   if ((isProductPage && currentUser) || (isRootPage && currentUser)) {

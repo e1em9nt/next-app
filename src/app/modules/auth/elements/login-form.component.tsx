@@ -24,7 +24,7 @@ const LoginFormComponent: FC<Readonly<IProps>> = () => {
 
   const router = useRouter()
 
-  const { login: loginUser } = useAuthStore()
+  const login = useAuthStore((state) => state.login)
 
   const translations = useTranslations('LogInForm')
   const schema = createLoginSchema(translations)
@@ -44,7 +44,7 @@ const LoginFormComponent: FC<Readonly<IProps>> = () => {
 
   // handler
   const handleLoginFormSubmit = async (data: TLoginSchemaData) => {
-    const result = await loginUser(data.email, data.password)
+    const result = await login(data.email, data.password)
     if (result.success) {
       router.push('/products')
     } else {
