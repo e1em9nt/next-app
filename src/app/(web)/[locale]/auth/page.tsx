@@ -1,5 +1,5 @@
 import { type Metadata, type NextPage } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Suspense } from 'react'
 
 import { AuthModule } from '@/app/modules/auth'
@@ -10,7 +10,7 @@ interface IMetadataProps extends ILocaleParamsProps {
   searchParams: Promise<{ tab: string }>
 }
 
-interface IProps {}
+interface IProps extends ILocaleParamsProps {}
 
 // metadata
 export async function generateMetadata({ params, searchParams }: Readonly<IMetadataProps>): Promise<Metadata> {
@@ -28,7 +28,12 @@ export async function generateMetadata({ params, searchParams }: Readonly<IMetad
 }
 
 // component
-const Page: NextPage<Readonly<IProps>> = () => {
+const Page: NextPage<Readonly<IProps>> = async (props: IProps) => {
+  const { params } = props
+  const { locale } = await params
+
+  setRequestLocale(locale)
+
   //return
   return (
     <Suspense>

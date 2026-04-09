@@ -1,8 +1,12 @@
 import { type Metadata, type NextPage } from 'next'
 import { notFound } from 'next/navigation'
+import { setRequestLocale } from 'next-intl/server'
+
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
 import { getProductById, getTopProductIds, productQueryOptions } from '@/app/entities/api'
 import { ProductModule } from '@/app/modules/product'
+import { type TLocale } from '@/app/shared/interfaces'
 import { routing } from '@/pkg/locale'
 import { getQueryClient } from '@/pkg/rest-api'
 
@@ -14,7 +18,7 @@ export const dynamicParams = true
 
 // interface
 interface IProps {
-  params: Promise<{ id: string }>
+  params: Promise<TLocale & { id: string }>
 }
 
 // metadata
@@ -46,18 +50,22 @@ export async function generateStaticParams() {
 }
 
 // component
-const Page: NextPage<Readonly<IProps>> = async (props) => {
+const Page: NextPage<Readonly<IProps>> = async (props: IProps) => {
   const { params } = props
-  const { id } = await params
+  const { locale, id } = await params
+
+  setRequestLocale(locale)
 
   const queryClient = getQueryClient()
 
-  const product = await queryClient.fetchQuery(productQueryOptions(id))
-
-  if (!product) notFound()
+  await queryClient.fetchQuery(productQueryOptions(id))
 
   // return
-  return <ProductModule product={product} />
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ProductModule id={id} />
+    </HydrationBoundary>
+  )
 }
 
 export default Page
