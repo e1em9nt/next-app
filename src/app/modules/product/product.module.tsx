@@ -2,17 +2,21 @@
 
 import { type FC } from 'react'
 
-import { type IProductDetails } from '@/app/entities/models'
+import { useProductById } from '@/app/entities/api'
 import { ProductCardComponent } from '@/app/features/product-card'
 
 // interface
 interface IProps {
-  product: IProductDetails
+  id: string
 }
 
 // component
 const ProductModule: FC<Readonly<IProps>> = (props) => {
-  const { product } = props
+  const { id } = props
+
+  const { data: product } = useProductById(id)
+
+  if (!product) return null
 
   // return
   return (

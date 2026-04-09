@@ -2,6 +2,8 @@ import { type Metadata, type NextPage } from 'next'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+
 import { getProductById, getTopProductIds, productQueryOptions } from '@/app/entities/api'
 import { ProductModule } from '@/app/modules/product'
 import { type TLocale } from '@/app/shared/interfaces'
@@ -56,12 +58,14 @@ const Page: NextPage<Readonly<IProps>> = async (props: IProps) => {
 
   const queryClient = getQueryClient()
 
-  const product = await queryClient.fetchQuery(productQueryOptions(id))
-
-  if (!product) notFound()
+  await queryClient.fetchQuery(productQueryOptions(id))
 
   // return
-  return <ProductModule product={product} />
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ProductModule id={id} />
+    </HydrationBoundary>
+  )
 }
 
 export default Page
