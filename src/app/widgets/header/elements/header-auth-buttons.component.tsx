@@ -17,7 +17,10 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
   const pathname = usePathname()
   const router = useRouter()
 
-  const { currentUser, logout, _hasHydrated } = useAuthStore()
+  const currentUser = useAuthStore((state) => state.currentUser)
+  const logout = useAuthStore((state) => state.logout)
+  const hasHydrated = useAuthStore((state) => state._hasHydrated)
+
   const translations = useTranslations('Header.auth')
 
   const isRootPage = pathname === '/' || pathname.match(/^\/[a-z]{2}\/?$/)
@@ -29,14 +32,14 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
     router.push('/')
   }
 
-  // return in not hydrated state
-  if (!_hasHydrated) return null
+  // return for login/signup button flickering prevention
+  if (!hasHydrated) return null
 
   // return for authenticated user
   if ((isProductPage && currentUser) || (isRootPage && currentUser)) {
     return (
       <div className='flex items-center gap-5'>
-        <div className='flex items-center gap-2 text-sm'>
+        <div className='hidden items-center gap-2 text-sm sm:flex'>
           <User className='size-4' />
 
           <span>{currentUser.name}</span>

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { type FC, useEffect } from 'react'
+import { type FC } from 'react'
 
 import authBackground from '@/app/shared/assets/icon/main-bg.png'
 import { useAuthStore } from '@/app/shared/store'
@@ -22,22 +22,18 @@ const AuthModule: FC<Readonly<IProps>> = () => {
   const searchParams = useSearchParams()
   const tab = searchParams.get('tab') ?? 'login'
 
-  const { currentUser, _hasHydrated } = useAuthStore()
-  const translations = useTranslations('AuthPage.heading')
+  const currentUser = useAuthStore((state) => state.currentUser)
+  const hasHydrated = useAuthStore((state) => state._hasHydrated)
 
-  useEffect(() => {
-    if (_hasHydrated && currentUser) {
-      router.replace('/products')
-    }
-  }, [currentUser, _hasHydrated, router])
+  const translations = useTranslations('AuthPage.heading')
 
   // handler
   const handleTabChange = (value: string) => {
     router.replace(value === 'login' ? '/auth' : '/auth?tab=signup')
   }
 
-  // return for authenticated user
-  if (!_hasHydrated || currentUser) return null
+  // return for flicker prevention
+  if (!hasHydrated || currentUser) return null
 
   // return
   return (

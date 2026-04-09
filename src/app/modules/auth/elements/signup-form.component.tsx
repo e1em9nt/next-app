@@ -24,7 +24,7 @@ const SignupFormComponent: FC<Readonly<IProps>> = () => {
 
   const router = useRouter()
 
-  const { register: registerUser } = useAuthStore()
+  const signup = useAuthStore((state) => state.register)
 
   const translations = useTranslations('SignupForm')
   const schema = createSignupSchema(translations)
@@ -46,7 +46,7 @@ const SignupFormComponent: FC<Readonly<IProps>> = () => {
 
   // handler
   const handleSignupFormSubmit = async (data: TSignupSchemaData) => {
-    const result = await registerUser(data.name, data.email, data.password)
+    const result = await signup(data.name, data.email, data.password)
     if (result.success) {
       router.push('/products')
     } else {

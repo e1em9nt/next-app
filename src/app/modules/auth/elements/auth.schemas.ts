@@ -11,7 +11,7 @@ export const createLoginSchema = (t: (key: string) => string) =>
 export const createSignupSchema = (t: (key: string) => string) =>
   z
     .object({
-      name: z.string().min(2, t('errors.nameRequired')),
+      name: z.string().min(2, t('errors.nameRequired')).max(32, t('errors.nameTooLong')),
       email: z.email(t('errors.emailRequired')),
       password: z.string().min(8, t('errors.passwordRequired')),
       confirmPassword: z.string().nonempty(t('errors.confirmPasswordRequired')),
