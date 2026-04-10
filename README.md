@@ -39,8 +39,8 @@ A minimalist e-commerce product catalog built with Next.js 15. Browse a curated 
 
 ### Prerequisites
 
-- Node.js 18+
-- npm
+- Node.js 24+
+- yarn
 
 ### Installation
 
@@ -50,13 +50,13 @@ git clone https://github.com/e1em9nt/next-app.git
 cd project
 
 # Install dependencies
-npm install
+yarn install
 ```
 
 ### Running the development server
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser. The app redirects to `/en` by default.
@@ -64,15 +64,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. The app red
 ### Building for production
 
 ```bash
-npm run build
-npm run start
+yarn build
+yarn start
 ```
 
 ### Running E2E tests
 
 ```bash
 # Make sure the dev server is running first
-npm run dev
+yarn dev
 
 # In a separate terminal
 npx playwright test
