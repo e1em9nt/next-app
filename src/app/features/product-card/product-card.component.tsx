@@ -12,7 +12,7 @@ import { IProductCardProps } from './product-card.interface'
 import { calculateOriginalPrice } from './product-card.utils'
 
 // component
-const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props) => {
+const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props: IProductCardProps) => {
   const { product, imgPriority, variant = 'compact' } = props
 
   const formatCurrency = useFormatter()

@@ -6,7 +6,7 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" \"tests/**/*.{ts,tsx}\" --fix",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\" \"tests/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
-    "format": "npm run type-check && npm run lint && npm run prettier",
+    "format": "yarn run type-check && yarn run lint && yarn run prettier",
     "devsafe": "rm -rf .next && next dev",
     "dev": "next dev --turbo",
     "build": "next build",
@@ -20,6 +20,7 @@
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "ky": "^2.0.0",
     "lucide-react": "^0.577.0",
     "next": "15.5.12",
     "next-intl": "^4.8.3",
@@ -53,10 +54,10 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": "24.x"
   },
   "volta": {
-    "node": "22.x.x",
-    "npm": "10.x.x"
+    "node": "24.14.1",
+    "yarn": "1.22.22"
   }
 }
