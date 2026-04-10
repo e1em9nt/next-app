@@ -5,7 +5,7 @@ import { cn } from '@/pkg/theme/lib/utils'
 import { Button, buttonVariants } from '@/pkg/theme/ui/button'
 
 // component
-const ErrorFallbackModule: FC<Readonly<IErrorProps>> = (props) => {
+const ErrorFallbackModule: FC<Readonly<IErrorProps>> = (props: IErrorProps) => {
   const { reset, error } = props
 
   // return

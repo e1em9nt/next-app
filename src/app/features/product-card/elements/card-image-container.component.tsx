@@ -10,7 +10,7 @@ interface IProps {
 }
 
 // component
-const CardImageContainerComponent: FC<Readonly<IProps>> = (props) => {
+const CardImageContainerComponent: FC<Readonly<IProps>> = (props: IProps) => {
   const { children, isCompact, href = '' } = props
 
   const className = 'relative mb-6 overflow-hidden rounded-lg'

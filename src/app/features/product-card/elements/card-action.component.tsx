@@ -14,7 +14,7 @@ interface IProps {
 }
 
 // component
-const ProductCardActionComponent: FC<Readonly<IProps>> = (props) => {
+const ProductCardActionComponent: FC<Readonly<IProps>> = (props: IProps) => {
   const { isCompact, href = '' } = props
 
   const router = useRouter()
