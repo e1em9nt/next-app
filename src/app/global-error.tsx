@@ -9,7 +9,7 @@ import { type IErrorProps } from '@/app/shared/interfaces'
 type TProps = Required<IErrorProps>
 
 // component
-const Page: FC<Readonly<TProps>> = (props) => {
+const Page: FC<Readonly<TProps>> = (props: TProps) => {
   const { error } = props
 
   useEffect(() => {

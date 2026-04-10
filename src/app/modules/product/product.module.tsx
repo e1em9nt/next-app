@@ -11,7 +11,7 @@ interface IProps {
 }
 
 // component
-const ProductModule: FC<Readonly<IProps>> = (props) => {
+const ProductModule: FC<Readonly<IProps>> = (props: IProps) => {
   const { id } = props
 
   const { data: product } = useProductById(id)
