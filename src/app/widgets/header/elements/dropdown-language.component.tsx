@@ -20,7 +20,7 @@ interface IProps {
 }
 
 // component
-const LanguageDropdownComponent: FC<Readonly<IProps>> = (props) => {
+const LanguageDropdownComponent: FC<Readonly<IProps>> = (props: IProps) => {
   const { defaultOpen, align, trigger } = props
 
   const params = useParams()

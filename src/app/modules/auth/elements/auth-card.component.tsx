@@ -15,7 +15,7 @@ interface IProps {
 }
 
 // component
-const AuthCardComponent: FC<Readonly<IProps>> = (props) => {
+const AuthCardComponent: FC<Readonly<IProps>> = (props: IProps) => {
   const { variant } = props
 
   const translations = useTranslations('AuthPage.heading')

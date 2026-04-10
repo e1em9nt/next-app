@@ -13,7 +13,7 @@ interface IProps {
 }
 
 // component
-const RestApiProvider: FC<Readonly<IProps>> = (props) => {
+const RestApiProvider: FC<Readonly<IProps>> = (props: IProps) => {
   const { children } = props
 
   const queryClient = getQueryClient()

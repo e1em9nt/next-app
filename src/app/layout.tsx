@@ -8,7 +8,7 @@ interface IProps {
 }
 
 // component
-const RootLayout: FC<Readonly<IProps>> = (props) => {
+const RootLayout: FC<Readonly<IProps>> = (props: IProps) => {
   const { children } = props
 
   // return
