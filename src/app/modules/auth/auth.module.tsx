@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
 
-import authBackground from '@/app/shared/assets/icon/main-bg.png'
+import { bgImageMain } from '@/app/shared/assets'
 import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
@@ -37,14 +37,7 @@ const AuthModule: FC<Readonly<IProps>> = (props: IProps) => {
   // return
   return (
     <main className='relative min-h-[calc(100vh-64px)] px-2.5 py-8 sm:px-5'>
-      <Image
-        src={authBackground}
-        alt='Auth Background'
-        fill
-        priority
-        placeholder='blur'
-        className='-z-10 object-cover'
-      />
+      <Image src={bgImageMain} alt='Auth Background' fill priority placeholder='blur' className='-z-10 object-cover' />
 
       <Tabs defaultValue={tab} onValueChange={handleTabChange} className='mx-auto flex w-full max-w-md flex-col gap-8'>
         <TabsList className='space-x-4 self-center'>
