@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
 
@@ -13,14 +12,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
 import { AuthCardComponent } from './elements'
 
 // interface
-interface IProps {}
+interface IProps {
+  tab?: string
+}
 
 // component
-const AuthModule: FC<Readonly<IProps>> = () => {
-  const router = useRouter()
+const AuthModule: FC<Readonly<IProps>> = (props: IProps) => {
+  const { tab = 'login' } = props
 
-  const searchParams = useSearchParams()
-  const tab = searchParams.get('tab') ?? 'login'
+  const router = useRouter()
 
   const currentUser = useAuthStore((state) => state.currentUser)
   const hasHydrated = useAuthStore((state) => state._hasHydrated)
