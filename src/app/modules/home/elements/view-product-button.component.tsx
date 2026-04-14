@@ -20,7 +20,6 @@ const ViewProductsButtonComponent: FC<Readonly<IProps>> = () => {
 
   const translations = useTranslations('HomePage')
 
-  // handler
   const handleClick = () => {
     startTransition(() => {
       router.push(currentUser ? '/products' : '/auth')

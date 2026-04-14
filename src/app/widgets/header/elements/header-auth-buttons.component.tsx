@@ -26,7 +26,6 @@ const HeaderAuthButtonsComponent: FC<Readonly<IProps>> = () => {
   const isRootPage = pathname === '/' || pathname.match(/^\/[a-z]{2}\/?$/)
   const isProductPage = pathname.includes('/products')
 
-  // handler
   function handleLogout() {
     logout()
     router.push('/')

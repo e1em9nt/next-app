@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { type FC } from 'react'
 
-import bgImage from '@/app/shared/assets/icon/main-bg.png'
+import { bgImageMain } from '@/app/shared/assets'
 
 import { ViewProductsButtonComponent } from './elements'
 
@@ -17,7 +17,7 @@ const HomeModule: FC<Readonly<IProps>> = async () => {
   return (
     <main className='relative h-[calc(100vh-64px)] overflow-hidden px-5'>
       <Image
-        src={bgImage}
+        src={bgImageMain}
         alt='Minimalistic Background'
         fill
         priority

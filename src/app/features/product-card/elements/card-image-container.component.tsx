@@ -22,10 +22,10 @@ const CardImageContainerComponent: FC<Readonly<IProps>> = (props: IProps) => {
         {children}
       </Link>
     )
-  } else {
-    // return div as image container
-    return <div className={className}>{children}</div>
   }
+
+  // return div as image container
+  return <div className={className}>{children}</div>
 }
 
 export default CardImageContainerComponent

@@ -20,6 +20,7 @@ const HeaderComponent: FC<Readonly<IProps>> = () => {
           </Button>
         }
       />
+
       <HeaderAuthButtonsComponent />
     </header>
   )
