@@ -9,7 +9,7 @@ import { Card, CardContent } from '@/pkg/theme/ui/card'
 
 import { CardImageContainerComponent, ExpandedCardListItemComponent, ProductCardActionComponent } from './elements'
 import { IProductCardProps } from './product-card.interface'
-import { calculateOriginalPrice } from './product-card.utils'
+import { calculateOriginalPriceUtil } from './product-card.utils'
 
 // component
 const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props: IProductCardProps) => {
@@ -21,7 +21,7 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props: IProductCa
   const isCompact = variant === 'compact'
   const hasDiscount = product.discountPercentage > 0
 
-  const originalPrice = calculateOriginalPrice(product.price, product.discountPercentage)
+  const originalPrice = calculateOriginalPriceUtil(product.price, product.discountPercentage)
 
   // return
   return (

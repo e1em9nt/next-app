@@ -27,7 +27,6 @@ const AuthModule: FC<Readonly<IProps>> = (props: IProps) => {
 
   const translations = useTranslations('AuthPage.heading')
 
-  // handler
   const handleTabChange = (value: string) => {
     router.replace(value === 'login' ? '/auth' : '/auth?tab=signup')
   }

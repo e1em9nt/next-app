@@ -21,7 +21,9 @@ interface IProps {
 }
 
 // metadata
-export async function generateMetadata({ params }: IProps): Promise<Metadata> {
+export async function generateMetadata(props: Readonly<IProps>): Promise<Metadata> {
+  const { params } = props
+
   const { id } = await params
 
   const product = await getProductById(id)

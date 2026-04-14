@@ -10,7 +10,9 @@ interface IProps extends ILocaleParamsProps {
 }
 
 // metadata
-export async function generateMetadata({ params, searchParams }: Readonly<IProps>): Promise<Metadata> {
+export async function generateMetadata(props: Readonly<IProps>): Promise<Metadata> {
+  const { params, searchParams } = props
+
   const { tab } = await searchParams
   const { locale } = await params
 

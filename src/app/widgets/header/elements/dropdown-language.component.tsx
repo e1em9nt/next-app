@@ -30,7 +30,6 @@ const LanguageDropdownComponent: FC<Readonly<IProps>> = (props: IProps) => {
 
   const [language, setLanguage] = useState(params.locale as string)
 
-  // handler
   const handleLanguageChange = (nextLocale: string) => {
     setLanguage(nextLocale)
     // @ts-expect-error -- useParams returns a generic object, but router.replace handles it correctly
