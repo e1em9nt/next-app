@@ -7,7 +7,7 @@ import { type IProductDetails } from '@/app/entities/models'
 import { Badge } from '@/pkg/theme/ui/badge'
 import { Card, CardContent } from '@/pkg/theme/ui/card'
 
-import { CardImageContainerComponent, ProductCardActionComponent } from './elements'
+import { CardImageContainerComponent, ExpandedCardListItemComponent, ProductCardActionComponent } from './elements'
 import { IProductCardProps } from './product-card.interface'
 import { calculateOriginalPrice } from './product-card.utils'
 
@@ -82,30 +82,21 @@ const ProductCardComponent: FC<Readonly<IProductCardProps>> = (props: IProductCa
 
         {!isCompact && (
           <ul className='text-muted-foreground space-y-1.5 border-y py-2'>
-            <li>
-              <span className='mr-2'>
-                <PackagePlus className='text-foreground inline-block size-4' />
-              </span>
+            <ExpandedCardListItemComponent icon={PackagePlus}>
               Minimum Order Quantity: {(product as IProductDetails).minimumOrderQuantity}
-            </li>
-            <li>
-              <span className='mr-2'>
-                <CircleCheckBig className='text-foreground inline-block size-4' />
-              </span>
+            </ExpandedCardListItemComponent>
+
+            <ExpandedCardListItemComponent icon={CircleCheckBig}>
               {(product as IProductDetails).warrantyInformation}
-            </li>
-            <li>
-              <span className='mr-2'>
-                <RefreshCw className='text-foreground inline-block size-4' />
-              </span>
+            </ExpandedCardListItemComponent>
+
+            <ExpandedCardListItemComponent icon={RefreshCw}>
               {(product as IProductDetails).returnPolicy}
-            </li>
-            <li>
-              <span className='mr-2'>
-                <Truck className='text-foreground inline-block size-4' />
-              </span>
+            </ExpandedCardListItemComponent>
+
+            <ExpandedCardListItemComponent icon={Truck}>
               {(product as IProductDetails).shippingInformation}
-            </li>
+            </ExpandedCardListItemComponent>
           </ul>
         )}
 

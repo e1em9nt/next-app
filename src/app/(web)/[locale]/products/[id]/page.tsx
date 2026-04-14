@@ -1,5 +1,4 @@
 import { type Metadata, type NextPage } from 'next'
-import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
@@ -28,12 +27,12 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const product = await getProductById(id)
 
   const brand = product?.brand ?? 'Product'
-
-  if (!product) notFound()
+  const title = product?.title ? `${product.title} - ${brand}` : 'Product'
+  const description = product?.description ?? 'Product description'
 
   return {
-    title: `${product.title} - ${brand}`,
-    description: product.description,
+    title,
+    description,
   }
 }
 
