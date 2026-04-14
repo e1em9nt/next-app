@@ -8,14 +8,16 @@ interface IProps {
 }
 
 // hook
-export const useIntersection = ({ onIntersect, options = { threshold: 0.1, rootMargin: '100px' } }: IProps) => {
+export const useIntersection = (props: Readonly<IProps>) => {
+  const { onIntersect, options = { threshold: 0.1, rootMargin: '100px' } } = props
+
   const { ref, inView } = useInView(options)
 
   useEffect(() => {
     if (inView) {
       onIntersect()
     }
-  }, [inView, onIntersect])
+  }, [inView])
 
   // return
   return { ref }

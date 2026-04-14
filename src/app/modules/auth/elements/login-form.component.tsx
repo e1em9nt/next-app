@@ -42,7 +42,6 @@ const LoginFormComponent: FC<Readonly<IProps>> = () => {
     },
   })
 
-  // handler
   const handleLoginFormSubmit = async (data: TLoginSchemaData) => {
     const result = await login(data.email, data.password)
     if (result.success) {

@@ -44,7 +44,6 @@ const SignupFormComponent: FC<Readonly<IProps>> = () => {
     },
   })
 
-  // handler
   const handleSignupFormSubmit = async (data: TSignupSchemaData) => {
     const result = await signup(data.name, data.email, data.password)
     if (result.success) {
