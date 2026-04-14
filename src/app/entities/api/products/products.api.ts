@@ -23,6 +23,11 @@ export const getProducts = async (skip: number, signal?: AbortSignal): Promise<I
       skip,
       select: PRODUCTS_SELECT.map((item) => item.trim()).join(','),
     },
+    cache: 'force-cache',
+    next: {
+      revalidate: 3600,
+      tags: ['products'],
+    },
     signal,
   })
 
@@ -38,6 +43,11 @@ export const getTopProductIds = async (): Promise<{ id: number }[]> => {
       skip: 0,
       select: 'id',
     },
+    cache: 'force-cache',
+    next: {
+      revalidate: 3600,
+      tags: ['products', 'top-products'],
+    },
   })
 
   if (!response.ok) return []
@@ -49,6 +59,11 @@ export const getTopProductIds = async (): Promise<{ id: number }[]> => {
 
 export const getProductById = async (id: string, signal?: AbortSignal): Promise<IProductDetails | null> => {
   const response = await restApiFetcher.get(`products/${id}`, {
+    cache: 'force-cache',
+    next: {
+      revalidate: 3600,
+      tags: ['products', id],
+    },
     signal,
   })
 
