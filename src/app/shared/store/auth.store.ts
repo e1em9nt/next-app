@@ -32,7 +32,7 @@ interface IAuthState {
 // constants
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 7 // 7 days in seconds
 
-// helper
+// utils
 function setCookie(value: string) {
   document.cookie = `auth-token=${value}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`
 }
@@ -110,7 +110,6 @@ export const useAuthStore = create<IAuthState>()(
     }),
     {
       name: 'auth-store',
-
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.setHasHydrated(true)
@@ -120,7 +119,6 @@ export const useAuthStore = create<IAuthState>()(
           setCookie(state.token)
         }
       },
-
       partialize: (state) => ({
         users: state.users,
         currentUser: state.currentUser,

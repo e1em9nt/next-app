@@ -18,7 +18,6 @@ const ProductListModule: FC<Readonly<IProps>> = () => {
 
   const products = data?.pages.flatMap((page) => page.products) ?? []
 
-  //handler
   const handleIntersection = useCallback(() => {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage()
@@ -36,7 +35,7 @@ const ProductListModule: FC<Readonly<IProps>> = () => {
       <h2 className='text-2xl font-semibold sm:text-3xl'>{t('heading')}</h2>
 
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-        {products.map((product, index: number) => (
+        {products.map((product, index) => (
           <ProductCardComponent key={product.id} product={product} imgPriority={index < 4} />
         ))}
       </div>

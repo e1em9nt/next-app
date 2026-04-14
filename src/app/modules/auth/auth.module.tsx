@@ -1,11 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { type FC } from 'react'
 
-import authBackground from '@/app/shared/assets/icon/main-bg.png'
+import { bgImageMain } from '@/app/shared/assets'
 import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
@@ -13,21 +12,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/pkg/theme/ui/tabs'
 import { AuthCardComponent } from './elements'
 
 // interface
-interface IProps {}
+interface IProps {
+  tab?: string
+}
 
 // component
-const AuthModule: FC<Readonly<IProps>> = () => {
-  const router = useRouter()
+const AuthModule: FC<Readonly<IProps>> = (props: IProps) => {
+  const { tab = 'login' } = props
 
-  const searchParams = useSearchParams()
-  const tab = searchParams.get('tab') ?? 'login'
+  const router = useRouter()
 
   const currentUser = useAuthStore((state) => state.currentUser)
   const hasHydrated = useAuthStore((state) => state._hasHydrated)
 
   const translations = useTranslations('AuthPage.heading')
 
-  // handler
   const handleTabChange = (value: string) => {
     router.replace(value === 'login' ? '/auth' : '/auth?tab=signup')
   }
@@ -38,14 +37,7 @@ const AuthModule: FC<Readonly<IProps>> = () => {
   // return
   return (
     <main className='relative min-h-[calc(100vh-64px)] px-2.5 py-8 sm:px-5'>
-      <Image
-        src={authBackground}
-        alt='Auth Background'
-        fill
-        priority
-        placeholder='blur'
-        className='-z-10 object-cover'
-      />
+      <Image src={bgImageMain} alt='Auth Background' fill priority placeholder='blur' className='-z-10 object-cover' />
 
       <Tabs defaultValue={tab} onValueChange={handleTabChange} className='mx-auto flex w-full max-w-md flex-col gap-8'>
         <TabsList className='space-x-4 self-center'>

@@ -7,7 +7,7 @@ import { routing } from '@/pkg/locale'
 const PROTECTED = ['/products']
 const AUTH_ONLY = ['/auth']
 
-// helper
+// utils
 function isMatchingRoute(routes: string[], pathname: string): boolean {
   return routes.some((route) => pathname.startsWith(route))
 }

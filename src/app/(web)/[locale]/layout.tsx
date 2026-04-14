@@ -15,7 +15,9 @@ interface IProps extends ILocaleParamsProps {
 }
 
 // metadata
-export async function generateMetadata({ params }: ILocaleParamsProps): Promise<Metadata> {
+export async function generateMetadata(props: Readonly<ILocaleParamsProps>): Promise<Metadata> {
+  const { params } = props
+
   const { locale } = await params
 
   const translations = await getTranslations({ locale, namespace: 'HomePage' })
